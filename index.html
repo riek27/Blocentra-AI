@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLOCENTRAAI - AI-POWERED BITCOIN INSURANCE & RISK INTELLIGENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6E00FF;
+            --primary: #D4AF37; /* Deep gold/yellow */
             --secondary: #FFFFFF;
-            --accent: #FF0033;
-            --light: #F5F7FF;
+            --accent: #8B4513; /* Rich brown */
+            --light: #FFF8E1; /* Light yellow background */
             --dark: #1A1A2E;
             --text: #333333;
             --blue: #0066FF;
-            --yellow: #FFCC00;
+            --yellow: #FFD700;
             --green: #00CC66;
             --section-divider: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
             color: var(--text);
-            margin: 0;
-            padding: 0;
             background-color: var(--light);
             overflow-x: hidden;
         }
@@ -138,7 +144,7 @@
         
         .hero {
             padding: 12rem 0 6rem;
-            background: linear-gradient(rgba(245, 247, 255, 0.9), rgba(245, 247, 255, 0.9)), url('https://images.unsplash.com/photo-1620336655052-b57986f5a26a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.1)), var(--light);
             color: var(--text);
             text-align: center;
             position: relative;
@@ -180,44 +186,100 @@
             color: var(--text);
         }
         
-        .bitcoin-globe {
+        .concept-image {
             margin: 3rem auto;
             max-width: 800px;
             position: relative;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        .bitcoin-globe img {
+        .concept-container {
+            position: relative;
             width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .bitcoin-idle {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #F7931A 0%, #FFD700 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            z-index: 10;
+            border: 5px solid #8B4513;
+            animation: pulse 3s infinite;
+        }
+        
+        .ai-brain {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: #1E3A8A;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            color: white;
+            transform: translateX(-150px) rotate(0deg);
+            animation: rotate 15s linear infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        
+        .unlock-key {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
             border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border: 2px solid rgba(110, 0, 255, 0.3);
-            filter: saturate(1.2) contrast(1.1);
+            transform: translate(150px, -100px);
+            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 15;
         }
         
-        .bitcoin-globe:before {
-            content: '';
+        .connection-line {
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 1px solid var(--primary);
-            border-radius: 14px;
-            z-index: -1;
-            opacity: 0.5;
+            height: 5px;
+            background: var(--primary);
+            width: 150px;
+            transform-origin: left center;
+            z-index: 1;
         }
         
-        .bitcoin-globe:after {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            border: 1px solid var(--accent);
-            border-radius: 24px;
-            z-index: -2;
-            opacity: 0.3;
+        .connection-1 {
+            transform: rotate(30deg);
+            top: 50%;
+            left: 50%;
+        }
+        
+        .connection-2 {
+            transform: rotate(-30deg);
+            top: 50%;
+            left: 50%;
+        }
+        
+        .connection-3 {
+            transform: rotate(0deg);
+            top: 50%;
+            left: 50%;
+            width: 200px;
         }
         
         .btn {
@@ -232,13 +294,13 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(110, 0, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
         
         .btn:hover {
             background: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 0, 51, 0.4);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.4);
         }
         
         .btn-outline {
@@ -407,8 +469,8 @@
         }
         
         .team-member img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1.5rem;
@@ -432,6 +494,31 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
         }
         
         .business-model {
@@ -571,7 +658,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(110, 0, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
         }
         
         .form-group textarea {
@@ -707,6 +794,23 @@
             z-index: 1000;
         }
         
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: translateX(-150px) rotate(0deg); }
+            100% { transform: translateX(-150px) rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0% { transform: translate(150px, -100px); }
+            50% { transform: translate(150px, -120px); }
+            100% { transform: translate(150px, -100px); }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 flex-wrap: wrap;
@@ -767,6 +871,38 @@
                 padding: 4rem 0;
             }
             
+            .concept-image {
+                height: 300px;
+            }
+            
+            .bitcoin-idle {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+            
+            .ai-brain {
+                width: 180px;
+                height: 180px;
+                font-size: 4rem;
+                transform: translateX(-120px);
+            }
+            
+            .unlock-key {
+                transform: translate(120px, -80px);
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .connection-1, .connection-2 {
+                width: 120px;
+            }
+            
+            .connection-3 {
+                width: 150px;
+            }
+            
             .btn-outline {
                 display: block;
                 margin: 1rem auto 0;
@@ -774,7 +910,6 @@
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -805,8 +940,15 @@
                 <h1>AI-POWERED BITCOIN INSURANCE & RISK INTELLIGENCE</h1>
                 <p>Protecting and unlocking the value of idle Bitcoin through AI-driven insurance, risk scoring, and yield activation for individuals and institutions worldwide.</p>
                 
-                <div class="bitcoin-globe">
-                    <img src="https://images.unsplash.com/photo-1620336655052-b57986f5a26a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modern Blockchain Visualization">
+                <div class="concept-image">
+                    <div class="concept-container">
+                        <div class="connection-line connection-1"></div>
+                        <div class="connection-line connection-2"></div>
+                        <div class="connection-line connection-3"></div>
+                        <div class="ai-brain">🧠</div>
+                        <div class="bitcoin-idle">₿</div>
+                        <div class="unlock-key">🔑</div>
+                    </div>
                 </div>
                 
                 <div style="margin-top: 2.5rem;">
@@ -924,10 +1066,16 @@
         <div class="container">
             <h2>Our Team</h2>
             <div class="team-member">
-                <img src="https://via.placeholder.com/150" alt="Riek Gatluak Geka">
+                <img src="https://drive.google.com/uc?export=view&id=1kYgwkFLDqYmqwsF1cqC_t45j1jng5NjL" alt="Riek Gatluak Geka">
                 <h3>Riek Gatluak Geka</h3>
                 <span class="position">Founder & CEO</span>
                 <p>Crypto security expert, DeFi innovator, and AI strategist with deep experience in blockchain infrastructure and risk management. Visionary leader driving BlocentraAI's mission to secure the Bitcoin economy.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </section>
