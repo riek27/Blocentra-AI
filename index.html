@@ -23,7 +23,7 @@
             --card-bg: rgba(25, 25, 50, 0.6);
             --glass-bg: rgba(255, 255, 255, 0.05);
             --border-radius: 16px;
-            --transition: all 0.3s ease;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -38,6 +38,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         #particles-js {
@@ -53,7 +54,6 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
         header {
             padding: 20px 0;
             position: fixed;
@@ -164,7 +164,6 @@
             transition: var(--transition);
         }
 
-        /* Hero Section */
         .hero {
             padding: 180px 0 120px;
             text-align: center;
@@ -309,7 +308,6 @@
             100% { transform: translateY(0) rotate(0deg); }
         }
 
-        /* Section Styling */
         section {
             padding: 100px 0;
         }
@@ -335,7 +333,6 @@
             font-size: 1.1rem;
         }
 
-        /* Problem Statement */
         .problem-stats {
             display: flex;
             justify-content: center;
@@ -414,7 +411,6 @@
             margin-bottom: 20px;
         }
 
-        /* Solution Section */
         .solutions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -471,7 +467,6 @@
             color: var(--text-secondary);
         }
 
-        /* How It Works */
         .process-flow {
             display: flex;
             justify-content: center;
@@ -524,7 +519,6 @@
             border: 1px solid rgba(0, 212, 255, 0.2);
         }
 
-        /* Customers Section */
         .customers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -573,7 +567,6 @@
             color: var(--accent-gold);
         }
 
-        /* Market Opportunity */
         .market-stats {
             text-align: center;
             margin: 60px 0;
@@ -635,7 +628,6 @@
             color: var(--accent-cyan);
         }
 
-        /* Competitive Advantage */
         .comparison-container {
             overflow-x: auto;
             margin: 40px 0;
@@ -684,7 +676,6 @@
             font-size: 1.2rem;
         }
 
-        /* Roadmap */
         .timeline {
             position: relative;
             max-width: 1000px;
@@ -761,7 +752,6 @@
             font-size: 1.1rem;
         }
 
-        /* Waitlist Form Section */
         .waitlist-section {
             background: var(--secondary-dark);
             border-radius: var(--border-radius);
@@ -842,7 +832,6 @@
             margin-top: 30px;
         }
 
-        /* CTA Section */
         .cta-section {
             text-align: center;
             padding: 100px 0;
@@ -868,6 +857,9 @@
         .cta-section h2 {
             font-size: 2.8rem;
             margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cta-section p {
@@ -884,7 +876,6 @@
             flex-wrap: wrap;
         }
 
-        /* Footer */
         footer {
             background: var(--secondary-dark);
             padding: 80px 0 40px;
@@ -921,6 +912,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -946,7 +938,6 @@
             color: var(--text-secondary);
         }
 
-        /* Chatbot Widget */
         .chatbot-widget {
             position: fixed;
             bottom: 30px;
@@ -970,7 +961,6 @@
             transform: scale(1.1);
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -1009,8 +999,6 @@
             color: var(--text-primary);
         }
 
-        /* New Sections */
-        /* Features Section */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1057,7 +1045,6 @@
             color: var(--accent-gold);
         }
 
-        /* Business Model Section */
         .revenue-model {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1096,7 +1083,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Team Section */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1162,7 +1148,6 @@
             transform: translateY(-5px);
         }
 
-        /* FAQs Section */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -1211,7 +1196,6 @@
             max-height: 300px;
         }
 
-        /* Thank You Message */
         .thank-you-message {
             display: none;
             text-align: center;
@@ -1229,7 +1213,6 @@
             margin-bottom: 20px;
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1239,7 +1222,6 @@
             animation: fadeIn 1s ease forwards;
         }
 
-        /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 {
                 font-size: 3.2rem;
@@ -1419,10 +1401,8 @@
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
     <div id="particles-js"></div>
 
-    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -1451,7 +1431,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Securing the Future of Bitcoin — with AI, Insurance & Yield</h1>
@@ -1471,7 +1450,6 @@
         </div>
     </section>
 
-    <!-- Problem Statement -->
     <section>
         <div class="container">
             <div class="section-title">
@@ -1513,7 +1491,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features">
         <div class="container">
             <div class="section-title">
@@ -1555,7 +1532,6 @@
         </div>
     </section>
 
-    <!-- Solution -->
     <section id="solution">
         <div class="container">
             <div class="section-title">
@@ -1597,7 +1573,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section id="how-it-works">
         <div class="container">
             <div class="section-title">
@@ -1632,7 +1607,6 @@
         </div>
     </section>
 
-    <!-- Business Model -->
     <section id="business-model">
         <div class="container">
             <div class="section-title">
@@ -1661,7 +1635,6 @@
         </div>
     </section>
 
-    <!-- Target Customers -->
     <section id="customers">
         <div class="container">
             <div class="section-title">
@@ -1703,7 +1676,6 @@
         </div>
     </section>
 
-    <!-- Team Section -->
     <section id="team">
         <div class="container">
             <div class="section-title">
@@ -1722,7 +1694,7 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CTO" class="team-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CTO" class="team-image">
                     <h3 class="team-name">Sarah Johnson</h3>
                     <p class="team-role">CTO</p>
                     <p>Ex-Google AI Research lead, PhD in Machine Learning from Stanford</p>
@@ -1755,7 +1727,6 @@
         </div>
     </section>
 
-    <!-- Market Opportunity -->
     <section>
         <div class="container">
             <div class="section-title">
@@ -1791,7 +1762,6 @@
         </div>
     </section>
 
-    <!-- Competitive Advantage -->
     <section>
         <div class="container">
             <div class="section-title">
@@ -1847,7 +1817,6 @@
         </div>
     </section>
 
-    <!-- Roadmap -->
     <section id="roadmap">
         <div class="container">
             <div class="section-title">
@@ -1887,7 +1856,6 @@
         </div>
     </section>
 
-    <!-- FAQs Section -->
     <section id="faqs">
         <div class="container">
             <div class="section-title">
@@ -1939,7 +1907,6 @@
         </div>
     </section>
 
-    <!-- Waitlist Form Section -->
     <section id="waitlist" class="waitlist-section">
         <div class="container">
             <div class="section-title">
@@ -1964,10 +1931,7 @@
                     <h3>Get Early Access</h3>
                     <p>Join our exclusive waitlist for priority access</p>
                 </div>
-                <form id="waitlistForm" action="https://formspree.io/f/xgvybepe" method="POST">
-                    <input type="hidden" name="_subject" value="New Waitlist Submission from BlocentraAI">
-                    <input type="hidden" name="_replyto" value="info@blocentra.ai">
-                    
+                <form id="waitlistForm">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required placeholder="Enter your full name">
@@ -2013,7 +1977,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section>
         <div class="container">
             <div class="cta-section">
@@ -2027,7 +1990,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -2070,12 +2032,10 @@
         </div>
     </footer>
 
-    <!-- Chatbot Widget -->
     <div class="chatbot-widget">
         <i class="fas fa-comment-alt"></i>
     </div>
 
-    <!-- Modal -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
@@ -2102,7 +2062,6 @@
     </div>
 
     <script>
-        // Initialize particles background
         document.addEventListener('DOMContentLoaded', function() {
             particlesJS('particles-js', {
                 "particles": {
@@ -2193,7 +2152,6 @@
                 "retina_detect": true
             });
 
-            // Header scroll effect
             const header = document.querySelector('header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -2203,7 +2161,6 @@
                 }
             });
 
-            // Mobile menu toggle
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
             
@@ -2212,7 +2169,6 @@
                 menuToggle.classList.toggle('active');
             });
 
-            // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -2226,7 +2182,6 @@
                             block: 'start'
                         });
                         
-                        // Close mobile menu if open
                         if (mainNav.classList.contains('active')) {
                             mainNav.classList.remove('active');
                             menuToggle.classList.remove('active');
@@ -2235,7 +2190,6 @@
                 });
             });
 
-            // Modal functionality
             const contactModal = document.getElementById('contactModal');
             const closeModal = document.getElementById('closeModal');
             const contactForm = document.getElementById('contactForm');
@@ -2257,12 +2211,10 @@
 
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                // Show thank you message
                 alert('Thank you for your message. We will get back to you soon!');
                 contactModal.style.display = 'none';
             });
 
-            // Waitlist form handling
             const waitlistForm = document.getElementById('waitlistForm');
             const waitlistFormContainer = document.getElementById('waitlistFormContainer');
             const thankYouMessage = document.getElementById('thankYouMessage');
@@ -2271,38 +2223,14 @@
                 waitlistForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Get form data
-                    const formData = new FormData(waitlistForm);
+                    waitlistFormContainer.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                    thankYouMessage.classList.add('fade-in');
                     
-                    // Send form data using Fetch API
-                    fetch(waitlistForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Show thank you message
-                            waitlistFormContainer.style.display = 'none';
-                            thankYouMessage.style.display = 'block';
-                            thankYouMessage.classList.add('fade-in');
-                            
-                            // Reset form
-                            waitlistForm.reset();
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('There was a problem with your submission. Please try again.');
-                    });
+                    waitlistForm.reset();
                 });
             }
 
-            // CTA buttons click handling
             const ctaButtons = document.querySelectorAll('.cta-button:not([type="submit"])');
             ctaButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -2310,31 +2238,26 @@
                 });
             });
 
-            // FAQ accordion functionality
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 question.addEventListener('click', () => {
-                    // Close all other items
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                         }
                     });
                     
-                    // Toggle current item
                     item.classList.toggle('active');
                 });
             });
 
-            // Simple scroll animation for elements
             function checkScroll() {
                 const elements = document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content, .feature-card, .revenue-card, .team-card');
                 
                 elements.forEach(element => {
                     const position = element.getBoundingClientRect();
                     
-                    // If element is in viewport
                     if(position.top < window.innerHeight - 100) {
                         element.style.opacity = 1;
                         element.style.transform = 'translateY(0)';
@@ -2342,18 +2265,15 @@
                 });
             }
 
-            // Set initial state for animated elements
             document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content, .feature-card, .revenue-card, .team-card').forEach(element => {
                 element.style.opacity = 0;
                 element.style.transform = 'translateY(20px)';
                 element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             });
 
-            // Check scroll on load and scroll
             window.addEventListener('load', checkScroll);
             window.addEventListener('scroll', checkScroll);
             
-            // Initial check
             checkScroll();
         });
     </script>
