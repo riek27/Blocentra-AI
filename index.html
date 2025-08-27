@@ -1,513 +1,1869 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BlocentraAI — AI-Powered Bitcoin Protection & Insured Yield</title>
-  <meta name="description" content="BlocentraAI — Bitcoin-native AI insurance, real-time risk intelligence, and insured yield. Join the waitlist or try the demo.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root{
-      --bg:#060617;
-      --panel:rgba(255,255,255,0.04);
-      --muted:#9aa0b2;
-      --accent:#00d4ff;
-      --accent-2:#0066ff;
-      --gold:#ffd166;
-      --glass: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      --radius:14px;
-      --fw-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      --transition: 300ms cubic-bezier(.2,.9,.3,1);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:var(--fw-sans);
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,100,255,0.05), transparent), linear-gradient(180deg, var(--bg), #070721 80%);
-      color:#eef0ff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      overflow-x:hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlocentraAI | AI-Powered Bitcoin Insurance & Risk Intelligence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary-dark: #0a0a1a;
+            --secondary-dark: #10102a;
+            --accent-blue: #0066ff;
+            --accent-cyan: #00d4ff;
+            --accent-gold: #ffd700;
+            --accent-purple: #8a2be2;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0c0;
+            --gradient-primary: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            --gradient-gold: linear-gradient(135deg, var(--accent-gold), #ffb700);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #5d00ff);
+            --card-bg: rgba(25, 25, 50, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+        }
 
-    /* Layout */
-    .wrap{max-width:1200px;margin:0 auto;padding:28px}
-    header{position:sticky;top:0;backdrop-filter:blur(8px);background:rgba(6,6,23,0.45);border-bottom:1px solid rgba(255,255,255,0.04);z-index:40}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px;background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .brand .logo{
-      width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#001;box-shadow:0 6px 24px rgba(0,212,255,0.07)
-    }
-    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;transition:color var(--transition)}
-    nav a:hover{color:var(--accent)}
-    .top-cta{display:flex;gap:12px;align-items:center}
-    .btn{padding:10px 16px;border-radius:999px;font-weight:700;border:none;cursor:pointer;transition:transform var(--transition);display:inline-flex;align-items:center;gap:8px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#041234;box-shadow:0 8px 30px rgba(0,102,255,0.18)}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .btn:active{transform:translateY(1px)}
-    .beta-pill{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:999px;color:var(--muted);font-weight:700;font-size:12px}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 460px;gap:32px;align-items:center;padding:56px 0}
-    .hero-left h1{font-size:44px;line-height:1.02;margin:0 0 16px;background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero-left p{color:var(--muted);font-size:16px;max-width:680px;margin-bottom:20px}
-    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-    .feature-row{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-    .pill{background:var(--panel);padding:10px 14px;border-radius:10px;font-weight:600;color:var(--muted);display:inline-flex;gap:8px;align-items:center}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* Right panel - demo / waitlist */
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 40px rgba(4,10,30,0.6)}
-    .panel h4{margin:0 0 10px;font-size:16px;color:#fff}
-    .panel .small{color:var(--muted);font-size:13px;margin-bottom:12px}
-    .iframe-wrap{width:100%;height:320px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
-    .mini-cta{display:flex;gap:8px;margin-top:10px}
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    /* Sections */
-    section{padding:56px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .card{background:var(--panel);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .card h3{margin:0 0 8px}
-    .muted{color:var(--muted)}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    /* Features list */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .feature i{font-size:20px;color:var(--gold);margin-right:10px}
+        /* Header & Navigation */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
 
-    /* Founders / team */
-    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .person{display:flex;gap:14px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#041234}
-    .name{font-weight:700}
-    .role{color:var(--muted);font-size:13px}
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
 
-    /* Trust / metrics */
-    .metrics{display:flex;gap:18px;flex-wrap:wrap}
-    .metric{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);min-width:140px;text-align:center}
-    .metric .num{font-size:20px;font-weight:800;color:var(--accent)}
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* FAQ */
-    .faq{max-width:980px;margin:0 auto}
-    details{background:var(--panel);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:12px}
-    summary{font-weight:700;cursor:pointer}
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 24px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /* Footer */
-    footer{padding:40px 0;color:var(--muted)}
-    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .socials{display:flex;gap:10px;margin-top:8px}
-    .socials a{display:inline-flex;width:38px;height:38px;border-radius:10px;align-items:center;justify-content:center;background:var(--panel);color:var(--muted);text-decoration:none}
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--accent-cyan);
+        }
 
-    /* Responsive */
-    @media (max-width:1024px){ .hero{grid-template-columns:1fr; } .features{grid-template-columns:repeat(2,1fr)} .team-grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:600px){ .wrap{padding:18px} nav ul{display:none} .panel{padding:12px} .features{grid-template-columns:1fr} .team-grid{grid-template-columns:1fr} .footer-grid{grid-template-columns:1fr} .hero-left h1{font-size:28px} }
-  </style>
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, var(--accent-cyan), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-blue);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .secondary-button:hover {
+            background: rgba(0, 102, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .demo-button {
+            background: var(--gradient-purple);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+        }
+
+        .bitcoin-animation {
+            margin-top: 80px;
+            position: relative;
+            height: 200px;
+        }
+
+        .floating-btc {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+            animation: float 6s ease-in-out infinite;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .floating-btc:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.8);
+        }
+
+        .floating-btc:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+            width: 40px;
+            height: 40px;
+        }
+
+        .floating-btc:nth-child(2) {
+            top: 10%;
+            left: 50%;
+            animation-delay: 1s;
+            width: 60px;
+            height: 60px;
+        }
+
+        .floating-btc:nth-child(3) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+            width: 35px;
+            height: 35px;
+        }
+
+        .floating-btc:nth-child(4) {
+            top: 60%;
+            left: 10%;
+            animation-delay: 3s;
+            width: 45px;
+            height: 45px;
+        }
+
+        .floating-btc:nth-child(5) {
+            top: 70%;
+            left: 70%;
+            animation-delay: 4s;
+            width: 55px;
+            height: 55px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Problem Statement */
+        .problem-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            width: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+
+        .stat-text {
+            color: var(--text-secondary);
+        }
+
+        .risk-visualization {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .risk-item {
+            background: var(--glass-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            width: 220px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .risk-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.2);
+        }
+
+        .risk-icon {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        /* Solution Section */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .solution-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        .solution-icon {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-cyan);
+        }
+
+        .solution-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .solution-card p {
+            color: var(--text-secondary);
+        }
+
+        /* How It Works */
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 25px;
+            position: relative;
+            width: 220px;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .step-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .process-tagline {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-top: 50px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            background-color: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Customers Section */
+        .customers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .customer-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .customer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .customer-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .customer-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .customer-icon {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-gold);
+        }
+
+        /* Market Opportunity */
+        .market-stats {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .big-stat {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            text-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .revenue-chart {
+            width: 100%;
+            height: 350px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin: 50px 0;
+            padding: 25px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chart-bar {
+            width: 70px;
+            background: var(--gradient-primary);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .chart-bar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.5);
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .chart-value {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
+
+        /* Competitive Advantage */
+        .comparison-container {
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 800px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            background: rgba(0, 102, 255, 0.2);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .checkmark {
+            color: #00ff8c;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .x-mark {
+            color: #ff3366;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Roadmap */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 60px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            background: var(--gradient-primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -4px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 15px 50px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--accent-cyan);
+            border: 5px solid var(--primary-dark);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -17px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -17px;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Waitlist Form Section */
+        .waitlist-section {
+            background: var(--secondary-dark);
+            border-radius: var(--border-radius);
+            padding: 80px 0;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .waitlist-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.03;
+            z-index: -1;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-title h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(10, 10, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+            background: var(--secondary-dark);
+            border-radius: var(--border-radius);
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.03;
+            z-index: -1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-dark);
+            padding: 80px 0 40px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--accent-cyan);
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Chatbot Widget */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .chatbot-widget:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--secondary-dark);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary-dark);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .process-step:not(:last-child)::after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -30px;
+                transform: translateX(50%);
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .problem-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-card {
+                margin: 10px 0;
+            }
+            
+            .big-stat {
+                font-size: 3.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .floating-btc {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            
+            .chart-bar {
+                width: 40px;
+            }
+            
+            .waitlist-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div class="brand">
-          <div class="logo"><i class="fas fa-shield-alt" style="font-size:18px;color:#001;"></i></div>
-          BlocentraAI
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                BlocentraAI
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#customers">Customers</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#waitlist">Waitlist</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button" id="headerCta">Get Early Access</button>
         </div>
-        <div class="beta-pill">Beta — Invite only</div>
-      </div>
+    </header>
 
-      <nav aria-label="Primary Navigation">
-        <ul>
-          <li><a href="#solution">Solution</a></li>
-          <li><a href="#how-it-works">How it Works</a></li>
-          <li><a href="#founders">Founders</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="top-cta">
-        <a class="btn btn-ghost" href="https://riek27.github.io/blocentraAIdemo/" target="_blank" rel="noreferrer">Try Demo</a>
-        <a class="btn btn-primary" href="#waitlist">Join Waitlist</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-left">
-        <h1 id="hero-heading">Securing Bitcoin with AI-native Insurance, Risk Intelligence & Insured Yield</h1>
-        <p>BlocentraAI brings institutional-grade protection to Bitcoin holders — non-custodial insurance, real-time wallet scoring, and insured yield products designed to unlock capital while preserving ownership.</p>
-
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#waitlist"><i class="fas fa-user-plus"></i> Join Waitlist</a>
-          <a class="btn btn-ghost" href="https://riek27.github.io/blocentraAIdemo/" target="_blank" rel="noreferrer"><i class="fas fa-vial"></i> Open MVP Demo</a>
-          <a class="btn btn-ghost" href="#founders"><i class="fas fa-users"></i> Meet the Founders</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Securing the Future of Bitcoin — with AI, Insurance & Yield</h1>
+            <p>BlocentraAI transforms idle BTC into a safe, insured, and intelligent financial asset.</p>
+            <div class="hero-buttons">
+                <button class="cta-button" id="heroCta">Get Early Access</button>
+                <a href="https://riek27.github.io/blocentraAIdemo/" target="_blank" class="demo-button">View MVP Demo</a>
+                <button class="secondary-button">View Whitepaper</button>
+            </div>
+            <div class="bitcoin-animation">
+                <div class="floating-btc">₿</div>
+                <div class="floating-btc">₿</div>
+                <div class="floating-btc">₿</div>
+                <div class="floating-btc">₿</div>
+                <div class="floating-btc">₿</div>
+            </div>
         </div>
-
-        <div class="feature-row" aria-hidden="false">
-          <div class="pill"><i class="fas fa-bolt"></i> Real-time risk signals</div>
-          <div class="pill"><i class="fas fa-shield-alt"></i> Behavior-driven insurance</div>
-          <div class="pill"><i class="fas fa-wallet"></i> Non-custodial insured yield</div>
-        </div>
-
-        <div style="margin-top:28px;display:flex;gap:12px;align-items:center">
-          <div class="card" style="display:inline-flex;align-items:center;gap:14px;padding:12px 16px;border-radius:999px">
-            <div style="font-weight:800;background:linear-gradient(90deg,var(--accent-2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent">$27B</div>
-            <div class="muted" style="font-size:13px">BTC protected by 2029 (projection)</div>
-          </div>
-          <div class="muted" style="font-size:13px">First 1,000 waitlist members get 50% off Year 1 premiums</div>
-        </div>
-      </div>
-
-      <!-- Right Panel: Waitlist + Demo embed -->
-      <aside class="panel" aria-label="Right panel with demo and waitlist">
-        <h4>Early Access & Live Demo</h4>
-        <div class="small">Try the live MVP or secure your priority spot.</div>
-
-        <div style="display:flex;gap:10px;margin-bottom:12px">
-          <a class="btn btn-primary" href="https://riek27.github.io/blocentra_waitlist/" target="_blank" rel="noreferrer"><i class="fas fa-list"></i> Open Waitlist</a>
-          <a class="btn btn-ghost" href="https://riek27.github.io/blocentraAIdemo/" target="_blank" rel="noreferrer"><i class="fas fa-flask"></i> Open Demo</a>
-        </div>
-
-        <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Embedded Waitlist (secure)</div>
-        <div class="iframe-wrap" title="Waitlist form">
-          <iframe src="https://riek27.github.io/blocentra_waitlist/" title="BlocentraAI Waitlist" style="width:100%;height:100%;border:0;background:transparent" loading="lazy" referrerpolicy="no-referrer"></iframe>
-        </div>
-
-        <div style="margin-top:12px">
-          <div style="font-size:13px;color:var(--muted)">Preview MVP (risk simulator)</div>
-          <div class="iframe-wrap" style="height:160px;margin-top:8px">
-            <iframe src="https://riek27.github.io/blocentraAIdemo/" title="BlocentraAI MVP Demo" style="width:100%;height:100%;border:0;background:transparent" loading="lazy" referrerpolicy="no-referrer"></iframe>
-          </div>
-        </div>
-
-        <div style="margin-top:12px;color:var(--muted);font-size:13px">
-          By joining the waitlist you agree to receive product updates. We only use email to deliver invites & security notices.
-        </div>
-      </aside>
     </section>
 
-    <!-- SOLUTION / FEATURES -->
+    <!-- Problem Statement -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>The Bitcoin Protection Problem</h2>
+                <p>Despite Bitcoin's massive valuation, it remains underprotected and underutilized in the modern financial ecosystem</p>
+            </div>
+            <div class="problem-stats">
+                <div class="stat-card">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-text">of Bitcoin sits idle with no protection or yield</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$1.2T</div>
+                    <div class="stat-text">market cap with no native insurance standard</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$Billions</div>
+                    <div class="stat-text">lost annually to hacks and exploits</div>
+                </div>
+            </div>
+            <div class="risk-visualization">
+                <div class="risk-item">
+                    <div class="risk-icon"><i class="fas fa-user-secret"></i></div>
+                    <h3>Wallet Breaches</h3>
+                </div>
+                <div class="risk-item">
+                    <div class="risk-icon"><i class="fas fa-bridge"></i></div>
+                    <h3>Bridge Exploits</h3>
+                </div>
+                <div class="risk-item">
+                    <div class="risk-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>Smart Contract Risks</h3>
+                </div>
+                <div class="risk-item">
+                    <div class="risk-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Exchange Failures</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
     <section id="solution">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-        <h2 style="margin:0">What We Build</h2>
-        <div class="muted">Comprehensive, Bitcoin-native protection layer</div>
-      </div>
-
-      <div class="features" aria-hidden="false">
-        <div class="feature">
-          <h3><i class="fas fa-brain"></i> AI-Powered Insurance</h3>
-          <p class="muted">Dynamic, behavior-driven insurance policies that price continuously based on wallet signals, historic behavior and threat intelligence.</p>
-          <ul class="muted" style="margin-top:8px;">
-            <li>Wallet compromise & key-theft coverage</li>
-            <li>Bridge & smart contract exploit protection</li>
-            <li>Fast claims triage & payout framework</li>
-          </ul>
-        </div>
-
-        <div class="feature">
-          <h3><i class="fas fa-search"></i> Real-time Risk Intelligence</h3>
-          <p class="muted">Continuous monitoring of on-chain activity with instant alerts and wallet trust scoring tailored for UTXO flows.</p>
-          <ul class="muted" style="margin-top:8px;">
-            <li>Trust score 0–100</li>
-            <li>Anomaly detection & phishing signals</li>
-            <li>Exchange & bridge reputation feeds</li>
-          </ul>
-        </div>
-
-        <div class="feature">
-          <h3><i class="fas fa-wallet"></i> BTCFi Vaults & Insured Yield</h3>
-          <p class="muted">Non-custodial yield products that combine vetted counterparties with tailored insurance to protect deposited BTC while earning yield.</p>
-          <ul class="muted" style="margin-top:8px;">
-            <li>Risk-weighted pools</li>
-            <li>Insured lending rails</li>
-            <li>Transparent, auditable vaults</li>
-          </ul>
-        </div>
-
-        <div class="feature">
-          <h3><i class="fas fa-chart-line"></i> Predictive Risk Models</h3>
-          <p class="muted">Forecast systemic threats, liquidations and black swan events to enable preemptive mitigation.</p>
-        </div>
-
-        <div class="feature">
-          <h3><i class="fas fa-code-branch"></i> B2B API Ecosystem</h3>
-          <p class="muted">Modular APIs for exchanges, custodians and wallets: risk scoring, claims management, and fraud feeds.</p>
-        </div>
-
-        <div class="feature">
-          <h3><i class="fas fa-gavel"></i> Institutional-Grade Compliance</h3>
-          <p class="muted">Auditable dashboards, AML/KYC integrations and regulatory reporting tools for funds and custodians.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- RISK SIMULATOR (SUMMARY) -->
-    <section id="demo-summary">
-      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-        <div class="card" style="flex:1;min-width:280px">
-          <h3 style="margin-bottom:8px">Live Risk Simulation</h3>
-          <p class="muted">Use our MVP to run a wallet assessment and see a sample trust score, premium estimate and yield opportunity.</p>
-          <ul class="muted" style="margin-top:8px">
-            <li>Wallet Trust Score: <strong style="color:var(--accent)">87 / 100</strong></li>
-            <li>Threat Level: <strong class="muted">Low</strong></li>
-            <li>Estimated Premium (annual): <strong>1.2%</strong></li>
-            <li>Recommended Coverage: <strong>$52,800</strong></li>
-            <li>BTCFi Yield Opportunity (sample): <strong>4.8% APY</strong></li>
-          </ul>
-          <div style="margin-top:12px">
-            <a class="btn btn-primary" href="https://riek27.github.io/blocentraAIdemo/" target="_blank" rel="noreferrer"><i class="fas fa-play"></i> Open full simulator</a>
-          </div>
-        </div>
-
-        <div class="card" style="flex:1;min-width:240px">
-          <h3 style="margin-bottom:8px">Enterprise Integrations</h3>
-          <p class="muted">APIs, webhooks and SLAs to integrate risk scoring and insurance into your product flows.</p>
-          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-            <div class="pill"><i class="fas fa-server"></i> Risk API</div>
-            <div class="pill"><i class="fas fa-shield-virus"></i> Claims API</div>
-            <div class="pill"><i class="fas fa-file-contract"></i> Compliance Feeds</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRUST & METRICS -->
-    <section aria-label="Trust">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-        <h2 style="margin:0">Trusted Signals</h2>
-        <div class="muted">Security-first — auditable and transparent</div>
-      </div>
-
-      <div class="metrics" style="margin-bottom:16px">
-        <div class="metric"><div class="num">1,200+</div><div class="muted">Beta signups</div></div>
-        <div class="metric"><div class="num">$430M</div><div class="muted">Projected Year 5 revenue</div></div>
-        <div class="metric"><div class="num">99%</div><div class="muted">Non-custodial assurances</div></div>
-      </div>
-
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <div class="card" style="flex:1;min-width:240px">
-          <h4 style="margin:0 0 6px">Audits & Attestations</h4>
-          <p class="muted">Smart contract components and vaults will be audited by top firms; risk models subject to external validation.</p>
-        </div>
-        <div class="card" style="flex:1;min-width:240px">
-          <h4 style="margin:0 0 6px">Regulatory Coverage</h4>
-          <p class="muted">Preparing for licensing across target jurisdictions; compliance-first design for institutional adoption.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOUNDERS & TEAM -->
-    <section id="founders" aria-labelledby="founders-heading">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-        <h2 id="founders-heading" style="margin:0">Founders & Leadership</h2>
-        <div class="muted">Seasoned team across security, insurance & Bitcoin engineering</div>
-      </div>
-
-      <div class="team-grid">
-        <div class="person">
-          <div class="avatar">RG</div>
-          <div>
-            <div class="name">Riek Gatluak Geka</div>
-            <div class="role">Founder & CEO — Bitcoin security & product</div>
-            <div class="muted" style="font-size:13px;margin-top:6px">Led early risk initiatives; founder of BlocentraAI (bio on request).</div>
-            <div style="margin-top:8px">
-              <a class="btn btn-ghost" href="#" style="padding:8px 12px"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our AI-Powered Solution</h2>
+                <p>BlocentraAI combines cutting-edge artificial intelligence with Bitcoin-native architecture to deliver comprehensive protection</p>
             </div>
-          </div>
-        </div>
-
-        <div class="person">
-          <div class="avatar">AM</div>
-          <div>
-            <div class="name">Asha Malik</div>
-            <div class="role">CTO — ML & Infrastructure</div>
-            <div class="muted" style="font-size:13px;margin-top:6px">Former ML lead; builds robust, explainable risk models for finance.</div>
-            <div style="margin-top:8px">
-              <a class="btn btn-ghost" href="#" style="padding:8px 12px"><i class="fab fa-github"></i> Github</a>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI-Powered Insurance</h3>
+                    <p>Dynamically priced, behavior-driven insurance policies covering wallets, smart contracts, and bridge transactions</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Real-Time Risk Intelligence</h3>
+                    <p>Continuous analysis of wallet activity, transaction patterns, and threat signals with instant alerts</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Predictive AI Risk Models</h3>
+                    <p>Advanced forecasting algorithms to anticipate systemic risks and black swan events</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-building"></i></div>
+                    <h3>Institutional-Grade Compliance</h3>
+                    <p>Transparent, auditable risk analytics and reporting tools for regulated entities</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Non-Custodial + Custodial Coverage</h3>
+                    <p>Flexible protection options that maintain user ownership and control of assets</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Protection Infrastructure</h3>
+                    <p>Unified trust and safety standard for Bitcoin that aligns with regulatory frameworks worldwide</p>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <div class="person">
-          <div class="avatar">JL</div>
-          <div>
-            <div class="name">Jonas Lee</div>
-            <div class="role">Head of Insurance & Partnerships</div>
-            <div class="muted" style="font-size:13px;margin-top:6px">Insurance & market structuring specialist; builds underwriting frameworks.</div>
-            <div style="margin-top:8px">
-              <a class="btn btn-ghost" href="#" style="padding:8px 12px"><i class="fas fa-envelope"></i> Contact</a>
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How BlocentraAI Works</h2>
+                <p>Our seamless process integrates with your existing Bitcoin workflow to provide protection and yield opportunities</p>
             </div>
-          </div>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Connect Wallet</h3>
+                    <p>Securely connect your Bitcoin wallet</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-search"></i></div>
+                    <h3>Risk Analysis</h3>
+                    <p>AI engine analyzes your holdings and behavior</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Get Protected</h3>
+                    <p>Receive tailored insurance coverage</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Earn Yield</h3>
+                    <p>Access insured yield opportunities</p>
+                </div>
+            </div>
+            <div class="process-tagline">
+                Retain ownership. Gain protection. Unlock yield.
+            </div>
         </div>
-      </div>
-
-      <div style="margin-top:18px" class="muted">Interested in joining the team or partnering? <a href="#contact" style="color:var(--accent)">Contact us.</a></div>
     </section>
 
-    <!-- WAITLIST (standalone anchor with form fallback) -->
-    <section id="waitlist" aria-labelledby="waitlist-heading">
-      <h2 id="waitlist-heading">Join the Waitlist</h2>
-      <p class="muted">Secure your priority spot. Early members receive exclusive pricing & pilot access.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:16px">
-        <form class="card" style="display:flex;flex-direction:column;gap:10px" action="https://riek27.github.io/blocentra_waitlist/" method="get" target="_blank" aria-label="Primary waitlist form">
-          <label class="muted">Full name
-            <input name="name" required placeholder="Jane Doe" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-          </label>
-
-          <label class="muted">Email address
-            <input type="email" name="email" required placeholder="you@domain.com" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-          </label>
-
-          <label class="muted">Organization (optional)
-            <input name="org" placeholder="Company or fund" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-          </label>
-
-          <label class="muted">Interested in
-            <select name="interest" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-              <option>Retail HODLer</option>
-              <option>Institution / Fund</option>
-              <option>Custodian / Exchange</option>
-              <option>DeFi Protocol / Developer</option>
-              <option>Partner / Reseller</option>
-            </select>
-          </label>
-
-          <div style="display:flex;gap:8px;align-items:center">
-            <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i> Secure My Spot</button>
-            <a class="btn btn-ghost" href="https://riek27.github.io/blocentra_waitlist/" target="_blank" rel="noreferrer">Open full waitlist</a>
-          </div>
-
-          <div class="muted" style="font-size:13px">We respect your privacy. Emails used only for product invites & security notices.</div>
-        </form>
-
-        <aside class="panel" style="padding:18px">
-          <h4 style="margin:0 0 8px">Why join now?</h4>
-          <ul class="muted" style="margin-top:8px">
-            <li>Priority access to MVP & pilot programs</li>
-            <li>Early pricing & underwriting discounts</li>
-            <li>Chance to shape product roadmap & integrations</li>
-          </ul>
-
-          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.04);margin:12px 0" />
-
-          <h4 style="margin:0 0 6px">Still want the original waitlist page?</h4>
-          <a class="btn btn-ghost" href="https://riek27.github.io/blocentra_waitlist/" target="_blank" rel="noreferrer"><i class="fas fa-external-link-alt"></i> Open original waitlist</a>
-        </aside>
-      </div>
+    <!-- Target Customers -->
+    <section id="customers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Built For All Bitcoin Participants</h2>
+                <p>BlocentraAI serves a broad spectrum of customers across the Bitcoin ecosystem</p>
+            </div>
+            <div class="customers-grid">
+                <div class="customer-card">
+                    <div class="customer-icon"><i class="fas fa-user"></i></div>
+                    <h3>Retail HODLers</h3>
+                    <p>Individual investors seeking affordable protection and yield without relinquishing control</p>
+                </div>
+                <div class="customer-card">
+                    <div class="customer-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Institutions</h3>
+                    <p>Hedge funds, ETFs, and asset managers requiring real-time risk analytics and compliance</p>
+                </div>
+                <div class="customer-card">
+                    <div class="customer-icon"><i class="fas fa-vault"></i></div>
+                    <h3>Custodians</h3>
+                    <p>Service providers looking to embed insurance offerings and risk scoring into their platforms</p>
+                </div>
+                <div class="customer-card">
+                    <div class="customer-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Exchanges</h3>
+                    <p>Trading platforms requiring wallet reputation systems and fraud reduction tools</p>
+                </div>
+                <div class="customer-card">
+                    <div class="customer-icon"><i class="fas fa-code"></i></div>
+                    <h3>DeFi Protocols</h3>
+                    <p>Developers building Bitcoin Layer 2 solutions needing reliable risk assessment</p>
+                </div>
+                <div class="customer-card">
+                    <div class="customer-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Regulators</h3>
+                    <p>Authorities seeking aggregated Bitcoin risk intelligence to inform policy decisions</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq" style="margin-top:14px">
-        <details>
-          <summary>Is BlocentraAI custodial?</summary>
-          <div class="muted" style="margin-top:8px">No — our architecture emphasizes non-custodial protections; you keep control of private keys while policies cover specific risks and insured vault flows.</div>
-        </details>
-        <details>
-          <summary>When will the product be available?</summary>
-          <div class="muted" style="margin-top:8px">We are targeting phased launches with wider availability following the MVP. Waitlist members get priority invites. (See MVP demo for feature coverage.)</div>
-        </details>
-        <details>
-          <summary>How do claims work?</summary>
-          <div class="muted" style="margin-top:8px">Claims are evaluated via our claims management system — fast triage, forensic analysis, and payout rails for validated losses. Institutional partners can request SLAs.</div>
-        </details>
-        <details>
-          <summary>Which countries will you support?</summary>
-          <div class="muted" style="margin-top:8px">We plan phased market entries — initially US and EU, expanding globally while securing necessary licenses.</div>
-        </details>
-      </div>
+    <!-- Market Opportunity -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Massive Market Opportunity</h2>
+                <p>The crypto insurance market is projected to exceed $40 billion by 2030</p>
+            </div>
+            <div class="market-stats">
+                <div class="big-stat">$27B</div>
+                <p>BTC Protected by 2029</p>
+            </div>
+            <div class="revenue-chart">
+                <div class="chart-bar" style="height: 15%;">
+                    <div class="chart-value">$4.6M</div>
+                    <div class="chart-label">Year 1</div>
+                </div>
+                <div class="chart-bar" style="height: 25%;">
+                    <div class="chart-value">$20.9M</div>
+                    <div class="chart-label">Year 2</div>
+                </div>
+                <div class="chart-bar" style="height: 45%;">
+                    <div class="chart-value">$76.1M</div>
+                    <div class="chart-label">Year 3</div>
+                </div>
+                <div class="chart-bar" style="height: 70%;">
+                    <div class="chart-value">$184M</div>
+                    <div class="chart-label">Year 4</div>
+                </div>
+                <div class="chart-bar" style="height: 100%;">
+                    <div class="chart-value">$430M</div>
+                    <div class="chart-label">Year 5</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-heading">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap">
-        <div style="flex:1;min-width:260px">
-          <h2 id="contact-heading">Contact & Partnerships</h2>
-          <p class="muted">For enterprise pilots, partnerships or press inquiries, reach out to our team.</p>
-
-          <div style="margin-top:10px" class="muted">
-            <div><strong>Email:</strong> <a href="mailto:info@blocentra.ai" style="color:var(--accent)">info@blocentra.ai</a></div>
-            <div style="margin-top:6px"><strong>HQ:</strong> San Francisco, CA</div>
-            <div style="margin-top:6px"><strong>Telegram:</strong> <a href="#" style="color:var(--accent)">t.me/blocentra</a></div>
-          </div>
+    <!-- Competitive Advantage -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Why BlocentraAI Leads</h2>
+                <p>Our Bitcoin-native approach and AI integration create an unparalleled competitive advantage</p>
+            </div>
+            <div class="comparison-container">
+                <table class="comparison-table">
+                    <tr>
+                        <th>Feature</th>
+                        <th>BlocentraAI</th>
+                        <th>Traditional Insurance</th>
+                        <th>Crypto Competitors</th>
+                    </tr>
+                    <tr>
+                        <td>Bitcoin-Native Architecture</td>
+                        <td class="checkmark">✓</td>
+                        <td class="x-mark">✗</td>
+                        <td class="x-mark">✗</td>
+                    </tr>
+                    <tr>
+                        <td>AI-Powered Risk Scoring</td>
+                        <td class="checkmark">✓</td>
+                        <td class="x-mark">✗</td>
+                        <td class="x-mark">Partial</td>
+                    </tr>
+                    <tr>
+                        <td>Real-Time Protection</td>
+                        <td class="checkmark">✓</td>
+                        <td class="x-mark">✗</td>
+                        <td class="x-mark">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Non-Custodial Solutions</td>
+                        <td class="checkmark">✓</td>
+                        <td class="x-mark">✗</td>
+                        <td class="x-mark">Partial</td>
+                    </tr>
+                    <tr>
+                        <td>Regulatory Compliance</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="x-mark">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Yield Generation</td>
+                        <td class="checkmark">✓</td>
+                        <td class="x-mark">✗</td>
+                        <td class="x-mark">Partial</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-
-        <form class="card" style="flex:1;min-width:320px;display:flex;flex-direction:column;gap:10px" action="mailto:info@blocentra.ai" method="post" enctype="text/plain" aria-label="Contact form">
-          <input name="name" placeholder="Your name" style="padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required>
-          <input name="email" type="email" placeholder="you@company.com" style="padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required>
-          <textarea name="message" rows="4" placeholder="Tell us about your interest (enterprise pilot, partnership, press)" style="padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
-          <div style="display:flex;gap:8px;align-items:center">
-            <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
-            <a class="btn btn-ghost" href="#waitlist">Join Waitlist</a>
-          </div>
-        </form>
-      </div>
     </section>
-  </main>
 
-  <footer style="background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-top:1px solid rgba(255,255,255,0.02)">
-    <div class="wrap" style="padding-top:24px;padding-bottom:24px">
-      <div class="footer-grid" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px">
-        <div style="min-width:180px">
-          <div class="brand" style="font-size:18px">BlocentraAI</div>
-          <div class="muted" style="margin-top:8px">Securing the future of Bitcoin with AI-powered insurance and risk intelligence.</div>
-          <div class="socials" style="margin-top:12px">
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          </div>
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Global Expansion Plan</h2>
+                <p>Strategic roadmap to become the global standard for Bitcoin risk intelligence</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 Q1-Q3</div>
+                    <div class="timeline-content">
+                        <h3>Launch & Local Validation</h3>
+                        <p>Establish operations in Estonia, onboard beta testers, finalize regulatory structure</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 Q4 - 2025 Q2</div>
+                    <div class="timeline-content">
+                        <h3>EU + Asia Expansion</h3>
+                        <p>Enter Germany, France, Netherlands, Switzerland. Launch partnerships in Singapore, Vietnam, India</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 Q3 - 2026 Q2</div>
+                    <div class="timeline-content">
+                        <h3>North America + Middle East</h3>
+                        <p>Expand to U.S. and Canada. Establish B2G pilots in UAE and Saudi Arabia</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 Q3+</div>
+                    <div class="timeline-content">
+                        <h3>Global Rollout</h3>
+                        <p>Expand to Latin America, Africa, and remaining Asia-Pacific markets</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div style="min-width:160px">
-          <h4 style="margin:0 0 8px">Product</h4>
-          <div class="muted"><a href="#solution" style="color:var(--muted);text-decoration:none">Features</a></div>
-          <div class="muted"><a href="https://riek27.github.io/blocentraAIdemo/" target="_blank" style="color:var(--muted);text-decoration:none">MVP Demo</a></div>
+    <!-- Waitlist Form Section -->
+    <section id="waitlist" class="waitlist-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join The Waitlist</h2>
+                <p>Be among the first to access BlocentraAI's revolutionary Bitcoin protection platform</p>
+            </div>
+            <div class="form-container">
+                <div class="form-title">
+                    <h3>Get Early Access</h3>
+                    <p>Join our exclusive waitlist for priority access</p>
+                </div>
+                <form id="waitlistForm" action="https://formsubmit.co/riekjordan@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Waitlist Submission from BlocentraAI">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://example.com/thankyou">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bitcoinAddress">Bitcoin Address (Optional)</label>
+                        <input type="text" id="bitcoinAddress" name="bitcoinAddress" placeholder="Enter your Bitcoin address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="walletType">Primary Wallet Type</label>
+                        <select id="walletType" name="walletType" required>
+                            <option value="" disabled selected>Select your wallet type</option>
+                            <option value="native">Native (Bitcoin Core, etc.)</option>
+                            <option value="custodial">Custodial (Exchange wallets)</option>
+                            <option value="hardware">Hardware Wallet</option>
+                            <option value="mobile">Mobile Wallet</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="btcAmount">Approximate BTC Holdings (Optional)</label>
+                        <input type="number" id="btcAmount" name="btcAmount" min="0" step="0.001" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Information (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your specific needs or questions"></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="cta-button">Join Waitlist</button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <div style="min-width:160px">
-          <h4 style="margin:0 0 8px">Company</h4>
-          <div class="muted"><a href="#founders" style="color:var(--muted);text-decoration:none">Founders</a></div>
-          <div class="muted"><a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a></div>
+    <!-- CTA Section -->
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2>Be Part of the Bitcoin Trust Layer</h2>
+                <p>Join our early access program or explore investment opportunities</p>
+                <div class="cta-buttons">
+                    <button class="cta-button" id="bottomCta">Join Beta Program</button>
+                    <button class="secondary-button">Request Investor Deck</button>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div style="min-width:220px">
-          <h4 style="margin:0 0 8px">Legal</h4>
-          <div class="muted"><a href="#" style="color:var(--muted);text-decoration:none">Privacy Policy</a></div>
-          <div class="muted"><a href="#" style="color:var(--muted);text-decoration:none">Terms of Service</a></div>
-          <div class="muted" style="margin-top:10px;font-size:13px">&copy; 2025 BlocentraAI. All rights reserved.</div>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BlocentraAI</h3>
+                    <p>Securing the future of Bitcoin with AI-powered insurance and risk intelligence solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA HQ</p>
+                    <p><i class="fas fa-envelope"></i> info@blocentra.ai</p>
+                    <p><i class="fas fa-phone"></i> +1 (415) 5**********</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp Business</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="#">Whitepaper</a>
+                    <a href="#">Documentation</a>
+                    <a href="https://riek27.github.io/blocentraAIdemo/" target="_blank">MVP Demo</a>
+                    <a href="#">API Access</a>
+                    <a href="#">GitHub</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Compliance</a>
+                    <a href="#">Insurance Licenses</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 BlocentraAI. All rights reserved.</p>
+            </div>
         </div>
-      </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <i class="fas fa-comment-alt"></i>
     </div>
-  </footer>
 
-  <!-- Lightweight interactions -->
-  <script>
-    // Smooth scrolling for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href.length>1 && document.querySelector(href)){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
-        }
-      });
-    });
+    <!-- Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Contact Us</h3>
+            <p>Have questions? Reach out to our team for more information.</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" rows="4" required></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="cta-button">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    // Reveal animations on scroll
-    const reveal = (el, delay=0) => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(10px)';
-      el.style.transition = 'opacity 600ms ease, transform 600ms ease';
-      setTimeout(()=> el.style.opacity = 1, delay);
-      setTimeout(()=> el.style.transform = 'translateY(0)', delay+20);
-    };
-    document.querySelectorAll('.card, .feature, .person, .metric').forEach((el,i)=> reveal(el, 80*i));
-  </script>
+    <script>
+        // Initialize particles background
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 100,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#0066ff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.3,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#00d4ff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            menuToggle.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // Modal functionality
+            const contactModal = document.getElementById('contactModal');
+            const closeModal = document.getElementById('closeModal');
+            const contactForm = document.getElementById('contactForm');
+            const chatWidget = document.querySelector('.chatbot-widget');
+
+            chatWidget.addEventListener('click', function() {
+                contactModal.style.display = 'flex';
+            });
+
+            closeModal.addEventListener('click', function() {
+                contactModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(e) {
+                if (e.target === contactModal) {
+                    contactModal.style.display = 'none';
+                }
+            });
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would normally handle form submission
+                alert('Thank you for your message. We will get back to you soon!');
+                contactModal.style.display = 'none';
+            });
+
+            // Waitlist form handling
+            const waitlistForm = document.getElementById('waitlistForm');
+            if (waitlistForm) {
+                waitlistForm.addEventListener('submit', function(e) {
+                    // You can add additional form validation here
+                    // This form uses FormSubmit.co so it will work without JavaScript
+                    // But we can enhance with a confirmation message
+                    localStorage.setItem('submittedWaitlist', 'true');
+                });
+            }
+
+            // CTA buttons click handling
+            const ctaButtons = document.querySelectorAll('.cta-button:not([type="submit"])');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Simple scroll animation for elements
+            function checkScroll() {
+                const elements = document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content');
+                
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+                    
+                    // If element is in viewport
+                    if(position.top < window.innerHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            // Set initial state for animated elements
+            document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content').forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            // Check scroll on load and scroll
+            window.addEventListener('load', checkScroll);
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
 </body>
 </html>
