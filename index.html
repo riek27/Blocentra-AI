@@ -938,67 +938,6 @@
             color: var(--text-secondary);
         }
 
-        .chatbot-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4);
-            transition: var(--transition);
-            z-index: 999;
-        }
-
-        .chatbot-widget:hover {
-            transform: scale(1.1);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: var(--secondary-dark);
-            padding: 40px;
-            border-radius: var(--border-radius);
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            color: var(--text-primary);
-        }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1213,6 +1152,122 @@
             margin-bottom: 20px;
         }
 
+        /* Chatbot Widget Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatbot-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-chatbot {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: rgba(0, 102, 255, 0.15);
+            border-bottom-left-radius: 5px;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: rgba(0, 212, 255, 0.15);
+            border-bottom-right-radius: 5px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 10, 26, 0.6);
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .chatbot-input button {
+            margin-left: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gradient-primary);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chatbot-input button:hover {
+            transform: scale(1.05);
+        }
+
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .chatbot-widget:hover {
+            transform: scale(1.1);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1295,6 +1350,11 @@
                 right: auto;
                 left: 20px;
             }
+
+            .chatbot-container {
+                width: 320px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1371,6 +1431,12 @@
             .chart-value {
                 top: -30px;
             }
+
+            .chatbot-container {
+                width: 90%;
+                right: 5%;
+                bottom: 80px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1396,6 +1462,10 @@
             .features-grid,
             .revenue-model {
                 grid-template-columns: 1fr;
+            }
+
+            .chatbot-container {
+                height: 400px;
             }
         }
     </style>
@@ -1684,45 +1754,17 @@
             </div>
             <div class="team-grid">
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CEO" class="team-image">
-                    <h3 class="team-name">Michael Chen</h3>
+                
+                    <h3 class="team-name">Riek Gatluak Geka</h3>
                     <p class="team-role">CEO & Founder</p>
-                    <p>Former Head of Risk at Coinbase, 15+ years in fintech and cybersecurity</p>
+                    <p>AI Strategies, AI System Architecture, </p>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CTO" class="team-image">
-                    <h3 class="team-name">Sarah Johnson</h3>
-                    <p class="team-role">CTO</p>
-                    <p>Ex-Google AI Research lead, PhD in Machine Learning from Stanford</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CFO" class="team-image">
-                    <h3 class="team-name">David Rodriguez</h3>
-                    <p class="team-role">CFO</p>
-                    <p>Former investment banker at Goldman Sachs, specializing in fintech and digital assets</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CLO" class="team-image">
-                    <h3 class="team-name">Emily Watson</h3>
-                    <p class="team-role">Chief Legal Officer</p>
-                    <p>Former regulatory counsel at SEC, expert in digital asset compliance and insurance law</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
+                
+                
             </div>
         </div>
     </section>
@@ -1731,10 +1773,11 @@
         <div class="container">
             <div class="section-title">
                 <h2>Massive Market Opportunity</h2>
-                <p>The crypto insurance market is projected to exceed $40 billion by 2030</p>
+                <p>The crypto insurance market is projected to exceed $40+ billion by 2030</p>
             </div>
             <div class="market-stats">
-                <div class="big-stat">$27B</div>
+                <div class="big-stat">$1.2T BTC sit idle</div>
+                <div class="big-stat">$29B+</div>
                 <p>BTC Protected by 2029</p>
             </div>
             <div class="revenue-chart">
@@ -1755,7 +1798,7 @@
                     <div class="chart-label">Year 4</div>
                 </div>
                 <div class="chart-bar" style="height: 100%;">
-                    <div class="chart-value">$430M</div>
+                    <div class="chart-value">$430+M</div>
                     <div class="chart-label">Year 5</div>
                 </div>
             </div>
@@ -1825,28 +1868,28 @@
             </div>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2024 Q1-Q3</div>
+                    <div class="timeline-date">2025 Q4 - Q1 2026</div>
                     <div class="timeline-content">
                         <h3>Launch & Local Validation</h3>
-                        <p>Establish operations in Estonia, onboard beta testers, finalize regulatory structure</p>
+                        <p>Establish operations in US, onboard beta testers, finalize partnership with exchange and hedge funds and institution across U.S</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2024 Q4 - 2025 Q2</div>
+                    <div class="timeline-date">2026 Q3 - 2026 Q4</div>
                     <div class="timeline-content">
                         <h3>EU + Asia Expansion</h3>
                         <p>Enter Germany, France, Netherlands, Switzerland. Launch partnerships in Singapore, Vietnam, India</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2025 Q3 - 2026 Q2</div>
+                    <div class="timeline-date">2027 Q1 - 2027 Q2</div>
                     <div class="timeline-content">
-                        <h3>North America + Middle East</h3>
-                        <p>Expand to U.S. and Canada. Establish B2G pilots in UAE and Saudi Arabia</p>
+                        <h3>NMiddle East</h3>
+                        <p>Expand to Meddle east and Canada. Establish B2G pilots in UAE and Saudi Arabia</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2026 Q3+</div>
+                    <div class="timeline-date">2027 Q3+</div>
                     <div class="timeline-content">
                         <h3>Global Rollout</h3>
                         <p>Expand to Latin America, Africa, and remaining Asia-Pacific markets</p>
@@ -1900,7 +1943,7 @@
                         Is BlocentraAI regulated? <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We are pursuing regulatory licenses in multiple jurisdictions including Estonia, Switzerland, and Singapore. Our compliance framework is designed to meet global standards for insurance and financial services.</p>
+                        <p>We are pursuing regulatory licenses in multiple jurisdictions including USA, Switzerland, and Singapore. Our compliance framework is designed to meet global standards for insurance and financial services.</p>
                     </div>
                 </div>
             </div>
@@ -2005,9 +2048,9 @@
                 </div>
                 <div class="footer-column">
                     <h3>Contact</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA HQ</p>
+                    <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA HQ (Planned)</p>
                     <p><i class="fas fa-envelope"></i> info@blocentra.ai</p>
-                    <p><i class="fas fa-phone"></i> +1 (415) 5**********</p>
+                    <p><i class="fas fa-phone"></i> +1 (415) 5********</p>
                     <p><i class="fab fa-whatsapp"></i> WhatsApp Business</p>
                 </div>
                 <div class="footer-column">
@@ -2032,33 +2075,32 @@
         </div>
     </footer>
 
-    <div class="chatbot-widget">
-        <i class="fas fa-comment-alt"></i>
-    </div>
-
-    <div class="modal" id="contactModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <h3>Contact Us</h3>
-            <p>Have questions? Reach out to our team for more information.</p>
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="contactName">Name</label>
-                    <input type="text" id="contactName" required>
-                </div>
-                <div class="form-group">
-                    <label for="contactEmail">Email</label>
-                    <input type="email" id="contactEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="contactMessage">Message</label>
-                    <textarea id="contactMessage" rows="4" required></textarea>
-                </div>
-                <div class="form-submit">
-                    <button type="submit" class="cta-button">Send Message</button>
-                </div>
-            </form>
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <h3>BlocentraAI Assistant</h3>
+            </div>
+            <div class="close-chatbot" id="closeChatbot">
+                <i class="fas fa-times"></i>
+            </div>
         </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <p>Hello! I'm BlocentraAI Assistant. How can I help you with Bitcoin insurance today?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your message here...">
+            <button id="sendMessageBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="chatbot-widget" id="chatbotWidget">
+        <i class="fas fa-comment-alt"></i>
     </div>
 
     <script>
@@ -2190,31 +2232,6 @@
                 });
             });
 
-            const contactModal = document.getElementById('contactModal');
-            const closeModal = document.getElementById('closeModal');
-            const contactForm = document.getElementById('contactForm');
-            const chatWidget = document.querySelector('.chatbot-widget');
-
-            chatWidget.addEventListener('click', function() {
-                contactModal.style.display = 'flex';
-            });
-
-            closeModal.addEventListener('click', function() {
-                contactModal.style.display = 'none';
-            });
-
-            window.addEventListener('click', function(e) {
-                if (e.target === contactModal) {
-                    contactModal.style.display = 'none';
-                }
-            });
-
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message. We will get back to you soon!');
-                contactModal.style.display = 'none';
-            });
-
             const waitlistForm = document.getElementById('waitlistForm');
             const waitlistFormContainer = document.getElementById('waitlistFormContainer');
             const thankYouMessage = document.getElementById('thankYouMessage');
@@ -2275,6 +2292,91 @@
             window.addEventListener('scroll', checkScroll);
             
             checkScroll();
+
+            // Chatbot functionality
+            const chatbotWidget = document.getElementById('chatbotWidget');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            
+            // Initially hide the chatbot container
+            chatbotContainer.style.display = 'none';
+            
+            // Toggle chatbot visibility
+            chatbotWidget.addEventListener('click', function() {
+                if (chatbotContainer.style.display === 'none') {
+                    chatbotContainer.style.display = 'flex';
+                } else {
+                    chatbotContainer.style.display = 'none';
+                }
+            });
+            
+            // Close chatbot
+            closeChatbot.addEventListener('click', function() {
+                chatbotContainer.style.display = 'none';
+            });
+            
+            // Send message function
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (message) {
+                    // Add user message
+                    addMessage(message, 'user');
+                    
+                    // Clear input
+                    chatbotInput.value = '';
+                    
+                    // Simulate bot response after a short delay
+                    setTimeout(() => {
+                        const botResponse = generateBotResponse(message);
+                        addMessage(botResponse, 'bot');
+                    }, 1000);
+                }
+            }
+            
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageElem = document.createElement('div');
+                messageElem.classList.add('message', sender + '-message');
+                messageElem.innerHTML = `<p>${text}</p>`;
+                chatbotMessages.appendChild(messageElem);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            // Send message on button click
+            sendMessageBtn.addEventListener('click', sendMessage);
+            
+            // Send message on Enter key
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Simple response generator
+            function generateBotResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                    return "Hello! How can I assist you with Bitcoin insurance today?";
+                } else if (lowerMessage.includes('insurance') || lowerMessage.includes('cover')) {
+                    return "We offer comprehensive Bitcoin insurance against hacks, scams, and technical failures. Our coverage includes up to $5 million per incident.";
+                } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('fee')) {
+                    return "Our insurance premiums start at 1.5% annually of the insured amount. The exact rate depends on your risk profile and coverage needs.";
+                } else if (lowerMessage.includes('claim') || lowerMessage.includes('process')) {
+                    return "The claims process is fully automated. In case of a verified incident, payouts are processed within 24 hours through smart contracts.";
+                } else if (lowerMessage.includes('bitcoin') || lowerMessage.includes('btc')) {
+                    return "We specialize in Bitcoin insurance and risk management. Our AI-powered system monitors threats in real-time to protect your assets.";
+                } else if (lowerMessage.includes('thank')) {
+                    return "You're welcome! Is there anything else you'd like to know about Bitcoin insurance?";
+                } else {
+                    return "Thank you for your message. I'm specialized in Bitcoin insurance. Could you tell me more about what you're looking to protect?";
+                }
+            }
         });
     </script>
 </body>
