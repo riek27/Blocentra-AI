@@ -98,7 +98,7 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 20px;
             position: relative;
         }
 
@@ -108,6 +108,7 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            font-size: 0.95rem;
         }
 
         nav ul li a::after {
@@ -732,6 +733,7 @@
 
         .timeline-item:nth-child(odd)::after {
             right: -17px;
+            left: auto;
         }
 
         .timeline-item:nth-child(even)::after {
@@ -1007,6 +1009,236 @@
             color: var(--text-primary);
         }
 
+        /* New Sections */
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        /* Business Model Section */
+        .revenue-model {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .revenue-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .revenue-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        .revenue-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-cyan);
+        }
+
+        .revenue-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
+            border-color: var(--accent-purple);
+        }
+
+        .team-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--accent-blue);
+        }
+
+        .team-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .team-role {
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .team-social a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-5px);
+        }
+
+        /* FAQs Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 300px;
+        }
+
+        /* Thank You Message */
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .thank-you-icon {
+            font-size: 4rem;
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 {
@@ -1032,6 +1264,7 @@
                 background: var(--primary-dark);
                 transition: var(--transition);
                 z-index: 999;
+                overflow-y: auto;
             }
             
             nav.active {
@@ -1040,9 +1273,10 @@
             
             nav ul {
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                height: 100%;
+                height: auto;
+                padding: 40px 0;
             }
             
             nav ul li {
@@ -1083,17 +1317,15 @@
 
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
+                flex-direction: row;
             }
             
             nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+                margin-top: 0;
             }
             
             nav ul li {
-                margin: 0 10px 10px;
+                margin: 10px 0;
             }
             
             .hero {
@@ -1138,6 +1370,25 @@
             .form-container {
                 padding: 25px;
             }
+            
+            .revenue-chart {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+                padding: 25px 15px;
+            }
+            
+            .chart-bar {
+                width: 100%;
+                max-width: 200px;
+                height: 35px !important;
+                margin-bottom: 40px;
+                border-radius: 8px;
+            }
+            
+            .chart-value {
+                top: -30px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1155,12 +1406,14 @@
                 font-size: 2.2rem;
             }
             
-            .chart-bar {
-                width: 40px;
-            }
-            
             .waitlist-section {
                 padding: 60px 0;
+            }
+            
+            .team-grid,
+            .features-grid,
+            .revenue-model {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1183,12 +1436,15 @@
             </div>
             <nav id="mainNav">
                 <ul>
+                    <li><a href="#features">Features</a></li>
                     <li><a href="#solution">Solution</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#business-model">Business Model</a></li>
                     <li><a href="#customers">Customers</a></li>
+                    <li><a href="#team">Team</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
                     <li><a href="#waitlist">Waitlist</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <button class="cta-button" id="headerCta">Get Early Access</button>
@@ -1252,6 +1508,48 @@
                 <div class="risk-item">
                     <div class="risk-icon"><i class="fas fa-exchange-alt"></i></div>
                     <h3>Exchange Failures</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced Features</h2>
+                <p>BlocentraAI offers a comprehensive suite of tools to protect and grow your Bitcoin holdings</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Risk Assessment</h3>
+                    <p>Our proprietary AI algorithms continuously analyze thousands of data points to assess risk in real-time</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Instant Coverage</h3>
+                    <p>Get insured in seconds with our automated underwriting process and smart contract execution</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Multi-Sig Security</h3>
+                    <p>Enterprise-grade security with multi-signature wallets and distributed key management</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Yield Optimization</h3>
+                    <p>AI-powered yield generation strategies that maximize returns while maintaining full insurance coverage</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Compliance</h3>
+                    <p>Built with regulatory compliance across multiple jurisdictions for institutional adoption</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Claim Automation</h3>
+                    <p>Instant, automated claim processing with AI verification and smart contract payouts</p>
                 </div>
             </div>
         </div>
@@ -1334,6 +1632,35 @@
         </div>
     </section>
 
+    <!-- Business Model -->
+    <section id="business-model">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sustainable Business Model</h2>
+                <p>Multiple revenue streams with strong unit economics and scalability</p>
+            </div>
+            <div class="revenue-model">
+                <div class="revenue-card">
+                    <div class="revenue-icon"><i class="fas fa-percentage"></i></div>
+                    <h3>Insurance Premium Fees</h3>
+                    <div class="revenue-percentage">1.5%</div>
+                    <p>Annual fee on insured assets</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Yield Generation Share</h3>
+                    <div class="revenue-percentage">15%</div>
+                    <p>Performance fee on generated yield</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Enterprise API Access</h3>
+                    <p>Custom pricing for institutional clients and developers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Target Customers -->
     <section id="customers">
         <div class="container">
@@ -1371,6 +1698,58 @@
                     <div class="customer-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Regulators</h3>
                     <p>Authorities seeking aggregated Bitcoin risk intelligence to inform policy decisions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Expert Team</h2>
+                <p>Seasoned professionals with decades of experience in fintech, cybersecurity, and blockchain</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CEO" class="team-image">
+                    <h3 class="team-name">Michael Chen</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <p>Former Head of Risk at Coinbase, 15+ years in fintech and cybersecurity</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CTO" class="team-image">
+                    <h3 class="team-name">Sarah Johnson</h3>
+                    <p class="team-role">CTO</p>
+                    <p>Ex-Google AI Research lead, PhD in Machine Learning from Stanford</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CFO" class="team-image">
+                    <h3 class="team-name">David Rodriguez</h3>
+                    <p class="team-role">CFO</p>
+                    <p>Former investment banker at Goldman Sachs, specializing in fintech and digital assets</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="CLO" class="team-image">
+                    <h3 class="team-name">Emily Watson</h3>
+                    <p class="team-role">Chief Legal Officer</p>
+                    <p>Former regulatory counsel at SEC, expert in digital asset compliance and insurance law</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1508,6 +1887,58 @@
         </div>
     </section>
 
+    <!-- FAQs Section -->
+    <section id="faqs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to the most common questions about BlocentraAI</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does BlocentraAI's insurance work? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our insurance uses smart contracts to provide automatic coverage based on AI risk assessment. When you connect your wallet, our algorithms evaluate risk factors and provide real-time coverage that adjusts as market conditions change.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is BlocentraAI non-custodial? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our core product is non-custodial, meaning you retain full control of your private keys and Bitcoin. We also offer custodial solutions for institutional clients who prefer that model.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What makes your AI different from others? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI is specifically trained on Bitcoin transaction data, market patterns, and security threats. It incorporates machine learning models that continuously improve with more data, providing unparalleled risk assessment accuracy.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How are claims processed? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Claims are automatically processed through smart contracts when predefined conditions are met. Our AI verifies claims in real-time, and payouts are typically processed within hours rather than weeks.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is BlocentraAI regulated? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We are pursuing regulatory licenses in multiple jurisdictions including Estonia, Switzerland, and Singapore. Our compliance framework is designed to meet global standards for insurance and financial services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Waitlist Form Section -->
     <section id="waitlist" class="waitlist-section">
         <div class="container">
@@ -1515,15 +1946,27 @@
                 <h2>Join The Waitlist</h2>
                 <p>Be among the first to access BlocentraAI's revolutionary Bitcoin protection platform</p>
             </div>
-            <div class="form-container">
+            
+            <div class="thank-you-message" id="thankYouMessage">
+                <div class="thank-you-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Thank You for Joining Our Waitlist!</h3>
+                <p>We'll be in touch soon with early access details. In the meantime, check out our MVP demo and whitepaper.</p>
+                <div class="hero-buttons" style="margin-top: 30px;">
+                    <a href="https://riek27.github.io/blocentraAIdemo/" target="_blank" class="demo-button">View MVP Demo</a>
+                    <button class="secondary-button">View Whitepaper</button>
+                </div>
+            </div>
+            
+            <div class="form-container" id="waitlistFormContainer">
                 <div class="form-title">
                     <h3>Get Early Access</h3>
                     <p>Join our exclusive waitlist for priority access</p>
                 </div>
-                <form id="waitlistForm" action="https://formsubmit.co/riekjordan@gmail.com" method="POST">
+                <form id="waitlistForm" action="https://formspree.io/f/xgvybepe" method="POST">
                     <input type="hidden" name="_subject" value="New Waitlist Submission from BlocentraAI">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://example.com/thankyou">
+                    <input type="hidden" name="_replyto" value="info@blocentra.ai">
                     
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -1814,19 +2257,48 @@
 
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                // Here you would normally handle form submission
+                // Show thank you message
                 alert('Thank you for your message. We will get back to you soon!');
                 contactModal.style.display = 'none';
             });
 
             // Waitlist form handling
             const waitlistForm = document.getElementById('waitlistForm');
+            const waitlistFormContainer = document.getElementById('waitlistFormContainer');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
             if (waitlistForm) {
                 waitlistForm.addEventListener('submit', function(e) {
-                    // You can add additional form validation here
-                    // This form uses FormSubmit.co so it will work without JavaScript
-                    // But we can enhance with a confirmation message
-                    localStorage.setItem('submittedWaitlist', 'true');
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(waitlistForm);
+                    
+                    // Send form data using Fetch API
+                    fetch(waitlistForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show thank you message
+                            waitlistFormContainer.style.display = 'none';
+                            thankYouMessage.style.display = 'block';
+                            thankYouMessage.classList.add('fade-in');
+                            
+                            // Reset form
+                            waitlistForm.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was a problem with your submission. Please try again.');
+                    });
                 });
             }
 
@@ -1838,9 +2310,26 @@
                 });
             });
 
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
             // Simple scroll animation for elements
             function checkScroll() {
-                const elements = document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content');
+                const elements = document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content, .feature-card, .revenue-card, .team-card');
                 
                 elements.forEach(element => {
                     const position = element.getBoundingClientRect();
@@ -1854,7 +2343,7 @@
             }
 
             // Set initial state for animated elements
-            document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content').forEach(element => {
+            document.querySelectorAll('.solution-card, .customer-card, .stat-card, .risk-item, .process-step, .timeline-content, .feature-card, .revenue-card, .team-card').forEach(element => {
                 element.style.opacity = 0;
                 element.style.transform = 'translateY(20px)';
                 element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1863,6 +2352,9 @@
             // Check scroll on load and scroll
             window.addEventListener('load', checkScroll);
             window.addEventListener('scroll', checkScroll);
+            
+            // Initial check
+            checkScroll();
         });
     </script>
 </body>
