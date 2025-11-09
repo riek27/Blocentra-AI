@@ -1166,3 +1166,106 @@ body {
         left: 20px;
     }
 }
+
+/* === Smooth Animations === */
+.product-page__card,
+.service-page__card,
+.featured__card {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-page__card:hover,
+.service-page__card:hover,
+.featured__card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: var(--shadow-xl);
+}
+
+/* Button hover effects */
+.button {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+/* Navigation link hover effects */
+.nav__link {
+    transition: all 0.3s ease;
+}
+
+/* Image loading animation */
+img {
+    transition: opacity 0.4s ease;
+}
+
+/* Modal animations */
+.modal__content {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Back to top button animation */
+.back-to-top {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* WhatsApp float animation */
+.whatsapp__float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Page load animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section entrance animations */
+.section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Staggered animations for product cards */
+.products-page__grid .product-page__card:nth-child(1) { animation-delay: 0.1s; }
+.products-page__grid .product-page__card:nth-child(2) { animation-delay: 0.2s; }
+.products-page__grid .product-page__card:nth-child(3) { animation-delay: 0.3s; }
+.products-page__grid .product-page__card:nth-child(4) { animation-delay: 0.4s; }
+.products-page__grid .product-page__card:nth-child(5) { animation-delay: 0.5s; }
+.products-page__grid .product-page__card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading states */
+.loading {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.loaded {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+}
