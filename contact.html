@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Kings Electronic Solutions. Visit our store, call us, or send a message for all your electronics and solar needs.">
+    <title>Contact Us - Kings Electronic Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">Kings Electronic Solutions</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="products.html" class="nav__link">Products & Services</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link active">Contact</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header section">
+        <div class="page-header__container container">
+            <h1 class="page-header__title">Contact Us</h1>
+            <p class="page-header__subtitle">Get in touch with our team for all your electronics and solar needs</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- Contact Content -->
+        <section class="contact-page section">
+            <div class="contact-page__container container">
+                <div class="contact-page__grid">
+                    <div class="contact-page__info">
+                        <h2 class="contact-page__title">Get In Touch</h2>
+                        <p class="contact-page__description">
+                            We're here to help you with all your electronic and solar energy needs. 
+                            Reach out to us through any of the following channels.
+                        </p>
+                        
+                        <div class="contact-page__details">
+                            <div class="contact-page__item">
+                                <div class="contact-page__icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-page__content">
+                                    <h3 class="contact-page__label">Phone</h3>
+                                    <p class="contact-page__text">+211 921 565 576</p>
+                                </div>
+                            </div>
+                            <div class="contact-page__item">
+                                <div class="contact-page__icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-page__content">
+                                    <h3 class="contact-page__label">Address</h3>
+                                    <p class="contact-page__text">Gudelle II, Sarri Battery Lokwili Road, Juba, South Sudan</p>
+                                </div>
+                            </div>
+                            <div class="contact-page__item">
+                                <div class="contact-page__icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-page__content">
+                                    <h3 class="contact-page__label">Business Hours</h3>
+                                    <p class="contact-page__text">Monday - Saturday: 8:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="contact-page__item">
+                                <div class="contact-page__icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-page__content">
+                                    <h3 class="contact-page__label">WhatsApp</h3>
+                                    <p class="contact-page__text">+211 921 565 576</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-page__social">
+                            <h3 class="contact-page__social-title">Follow Us</h3>
+                            <div class="contact-page__social-links">
+                                <a href="#" class="contact-page__social-link" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://wa.me/211921565576" class="contact-page__social-link" aria-label="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-page__form">
+                        <h2 class="contact-page__title">Send Us a Message</h2>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form__group">
+                                <label for="name" class="form__label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="email" class="form__label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="phone" class="form__label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="subject" class="form__label">Subject</label>
+                                <select id="subject" name="subject" class="form__input" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="product-inquiry">Product Inquiry</option>
+                                    <option value="service-request">Service Request</option>
+                                    <option value="quote-request">Quote Request</option>
+                                    <option value="technical-support">Technical Support</option>
+                                    <option value="general-question">General Question</option>
+                                </select>
+                            </div>
+                            <div class="form__group">
+                                <label for="message" class="form__label">Message</label>
+                                <textarea id="message" name="message" class="form__textarea" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="button form__button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section section">
+            <div class="map-section__container container">
+                <h2 class="section__title">Find Our Store</h2>
+                <div class="map-section__content">
+                    <div class="map-section__map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.752668287518!2d31.605234474964627!3d4.851466095945955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x171f3a2a6c0a1a0b%3A0x8e7d5e5e5e5e5e5e!2sJuba%2C%20South%20Sudan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0; border-radius: var(--border-radius-lg);" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="map-section__info">
+                        <h3 class="map-section__title">Visit Our Store</h3>
+                        <p class="map-section__description">
+                            Come visit our showroom in Gudelle II to see our products firsthand and speak with our knowledgeable staff.
+                        </p>
+                        <div class="map-section__details">
+                            <div class="map-section__item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Gudelle II, Sarri Battery Lokwili Road, Juba</span>
+                            </div>
+                            <div class="map-section__item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="map-section__item">
+                                <i class="fas fa-phone"></i>
+                                <span>+211 921 565 576</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <h3 class="footer__logo">Kings Electronic Solutions</h3>
+                    <p class="footer__description">Your trusted partner for electronics and solar energy solutions in South Sudan.</p>
+                </div>
+                <div class="footer__links">
+                    <div class="footer__column">
+                        <h4 class="footer__title">Quick Links</h4>
+                        <ul class="footer__list">
+                            <li><a href="index.html" class="footer__link">Home</a></li>
+                            <li><a href="about.html" class="footer__link">About Us</a></li>
+                            <li><a href="products.html" class="footer__link">Products</a></li>
+                            <li><a href="contact.html" class="footer__link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__column">
+                        <h4 class="footer__title">Contact Info</h4>
+                        <ul class="footer__list">
+                            <li><i class="fas fa-phone footer__icon"></i> +211 921 565 576</li>
+                            <li><i class="fas fa-map-marker-alt footer__icon"></i> Gudelle II, Juba, South Sudan</li>
+                            <li><i class="fas fa-clock footer__icon"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>&copy; 2025 Kings Electronic Solutions | All Rights Reserved</p>
+                </div>
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/211921565576" class="footer__social-link" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/211921565576" class="whatsapp__float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
