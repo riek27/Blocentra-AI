@@ -3,12 +3,12 @@ const productsData = [
     {
         name: "Voltage Regulators",
         description: "High-quality voltage regulators to protect your electronic devices from power fluctuations and surges. Our regulators ensure stable power supply even during voltage spikes.",
-        image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        image: "assets/scree.png"
     },
     {
         name: "Power Inverters",
         description: "Reliable power inverters for uninterrupted electricity supply during power outages. Available in various capacities to meet different power requirements.",
-        image: "https://images.unsplash.com/photo-1609592810793-abeb6c64b5c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        image: "assets/screen.png"
     },
     {
         name: "JBL Bluetooth Speakers",
@@ -23,12 +23,12 @@ const productsData = [
     {
         name: "Pure Sine Wave Inverters",
         description: "Advanced pure sine wave inverters for sensitive electronics and medical equipment. Provides clean, stable power similar to grid electricity.",
-        image: "https://images.unsplash.com/photo-1563013546-73dc7d5c2f0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        image: "assets/scre.png"
     },
     {
         name: "Batteries & Chargers",
         description: "Durable batteries and fast chargers for all your power backup needs. Includes solar batteries, inverter batteries, and universal charging solutions.",
-        image: "https://images.unsplash.com/photo-1605876233661-7c64c25d4a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        image: "assets/sc.png"
     }
 ];
 
