@@ -2,33 +2,33 @@
 const productsData = [
     {
         name: "Voltage Regulators",
-        description: "High-quality voltage regulators to protect your electronic devices from power fluctuations and surges.",
-        image: "https://source.unsplash.com/random/600x400/?voltage,regulator"
+        description: "High-quality voltage regulators to protect your electronic devices from power fluctuations and surges. Our regulators ensure stable power supply even during voltage spikes.",
+        image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
         name: "Power Inverters",
-        description: "Reliable power inverters for uninterrupted electricity supply during power outages.",
-        image: "https://source.unsplash.com/random/600x400/?power,inverter"
+        description: "Reliable power inverters for uninterrupted electricity supply during power outages. Available in various capacities to meet different power requirements.",
+        image: "https://images.unsplash.com/photo-1609592810793-abeb6c64b5c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
         name: "JBL Bluetooth Speakers",
-        description: "Premium quality JBL Bluetooth speakers for immersive audio experience and portable entertainment.",
-        image: "https://source.unsplash.com/random/600x400/?jbl,speaker"
+        description: "Premium quality JBL Bluetooth speakers for immersive audio experience and portable entertainment. Perfect for home, parties, and outdoor activities.",
+        image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
         name: "Solar Panels & Accessories",
-        description: "Efficient solar panels and complete solar energy system accessories for sustainable power solutions.",
-        image: "https://source.unsplash.com/random/600x400/?solar,panel"
+        description: "Efficient solar panels and complete solar energy system accessories for sustainable power solutions. Includes panels, batteries, charge controllers, and mounting kits.",
+        image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
         name: "Pure Sine Wave Inverters",
-        description: "Advanced pure sine wave inverters for sensitive electronics and medical equipment.",
-        image: "https://source.unsplash.com/random/600x400/?sine,inverter"
+        description: "Advanced pure sine wave inverters for sensitive electronics and medical equipment. Provides clean, stable power similar to grid electricity.",
+        image: "https://images.unsplash.com/photo-1563013546-73dc7d5c2f0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
         name: "Batteries & Chargers",
-        description: "Durable batteries and fast chargers for all your power backup needs.",
-        image: "https://source.unsplash.com/random/600x400/?battery,charger"
+        description: "Durable batteries and fast chargers for all your power backup needs. Includes solar batteries, inverter batteries, and universal charging solutions.",
+        image: "https://images.unsplash.com/photo-1605876233661-7c64c25d4a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     }
 ];
 
@@ -39,41 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize All Website Functionality
 function initializeWebsite() {
-    initializeSmoothScrolling();
     initializeMobileNavigation();
     initializeHeroSlider();
     initializeProductCards();
     initializeContactForm();
     initializeScrollEffects();
-}
-
-// Smooth Scrolling Implementation [citation:1][citation:7]
-function initializeSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                const navMenu = document.getElementById('nav-menu');
-                navMenu.classList.remove('show');
-            }
-        });
-    });
+    initializeModal();
+    setActiveNavLink();
 }
 
 // Mobile Navigation Toggle
@@ -85,12 +57,14 @@ function initializeMobileNavigation() {
     if (navToggle) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.add('show');
+            document.body.style.overflow = 'hidden';
         });
     }
     
     if (navClose) {
         navClose.addEventListener('click', () => {
             navMenu.classList.remove('show');
+            document.body.style.overflow = '';
         });
     }
     
@@ -99,13 +73,16 @@ function initializeMobileNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('show');
+            document.body.style.overflow = '';
         });
     });
 }
 
-// Hero Slider with Ken Burns Effect [citation:8]
+// Hero Slider with Ken Burns Effect 
 function initializeHeroSlider() {
     const slides = document.querySelectorAll('.home__slide');
+    if (slides.length === 0) return;
+    
     let currentSlide = 0;
     
     function showSlide(index) {
@@ -132,13 +109,13 @@ function initializeProductCards() {
     if (productsGrid) {
         productsData.forEach(product => {
             const productCard = document.createElement('div');
-            productCard.className = 'product__card';
+            productCard.className = 'product-page__card';
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product__image">
-                <div class="product__content">
-                    <h3 class="product__name">${product.name}</h3>
-                    <p class="product__description">${product.description}</p>
-                    <button class="button product__button request-quote" data-product="${product.name}">Request Quote</button>
+                <img src="${product.image}" alt="${product.name}" class="product-page__image">
+                <div class="product-page__content">
+                    <h3 class="product-page__name">${product.name}</h3>
+                    <p class="product-page__description">${product.description}</p>
+                    <button class="button product-page__button request-quote" data-product="${product.name}">Request Quote</button>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -168,24 +145,25 @@ function initializeContactForm() {
             const name = formData.get('name');
             const email = formData.get('email');
             const phone = formData.get('phone');
+            const subject = formData.get('subject');
             const message = formData.get('message');
             
             // Basic validation
-            if (!name || !email || !phone || !message) {
+            if (!name || !email || !phone || !subject || !message) {
                 alert('Please fill in all required fields.');
                 return;
             }
             
             // Simulate form submission
-            simulateFormSubmission(name, email, phone, message);
+            simulateFormSubmission(name, email, phone, subject, message);
         });
     }
 }
 
-// Simulate form submission (replace with actual backend integration)
-function simulateFormSubmission(name, email, phone, message) {
+// Simulate form submission
+function simulateFormSubmission(name, email, phone, subject, message) {
     // Show loading state
-    const submitButton = document.querySelector('.form__button');
+    const submitButton = document.querySelector('#contact-form .form__button');
     const originalText = submitButton.textContent;
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
@@ -228,58 +206,19 @@ function initializeScrollEffects() {
     handleScroll();
 }
 
-// Quote Modal Functionality
-function showQuoteModal(productName) {
-    // Create modal HTML
-    const modalHTML = `
-        <div class="modal-overlay" id="quote-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Request Quote: ${productName}</h3>
-                    <button class="modal-close" id="modal-close">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="quote-form">
-                        <div class="form__group">
-                            <label for="quote-name" class="form__label">Full Name</label>
-                            <input type="text" id="quote-name" name="name" class="form__input" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="quote-email" class="form__label">Email Address</label>
-                            <input type="email" id="quote-email" name="email" class="form__input" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="quote-phone" class="form__label">Phone Number</label>
-                            <input type="tel" id="quote-phone" name="phone" class="form__input" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="quote-product" class="form__label">Product</label>
-                            <input type="text" id="quote-product" name="product" class="form__input" value="${productName}" readonly>
-                        </div>
-                        <div class="form__group">
-                            <label for="quote-message" class="form__label">Additional Requirements</label>
-                            <textarea id="quote-message" name="message" class="form__textarea" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="button form__button">Submit Quote Request</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Add modal to page
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    
-    // Add modal styles
-    addModalStyles();
-    
-    // Initialize modal functionality
+// Modal Functionality
+function initializeModal() {
     const modal = document.getElementById('quote-modal');
+    if (!modal) return;
+    
     const closeButton = document.getElementById('modal-close');
     const quoteForm = document.getElementById('quote-form');
     
     // Close modal events
-    closeButton.addEventListener('click', closeModal);
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    }
+    
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
@@ -287,80 +226,70 @@ function showQuoteModal(productName) {
     });
     
     // Form submission
-    quoteForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const product = formData.get('product');
-        
-        alert(`Thank you, ${name}! Your quote request for ${product} has been submitted. We will contact you shortly.`);
-        closeModal();
-    });
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const product = formData.get('product');
+            
+            alert(`Thank you, ${name}! Your quote request for ${product} has been submitted. We will contact you shortly.`);
+            closeModal();
+        });
+    }
     
     function closeModal() {
-        modal.remove();
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 
-// Add modal styles dynamically
-function addModalStyles() {
-    const modalStyles = `
-        <style>
-            .modal-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 2000;
-                padding: 20px;
-            }
-            
-            .modal-content {
-                background: var(--white);
-                border-radius: var(--border-radius-lg);
-                box-shadow: var(--shadow-xl);
-                max-width: 500px;
-                width: 100%;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            
-            .modal-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1.5rem;
-                border-bottom: 1px solid var(--light-gray);
-            }
-            
-            .modal-header h3 {
-                color: var(--dark);
-                margin: 0;
-            }
-            
-            .modal-close {
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-                color: var(--gray);
-                transition: var(--transition);
-            }
-            
-            .modal-close:hover {
-                color: var(--dark);
-            }
-            
-            .modal-body {
-                padding: 1.5rem;
-            }
-        </style>
-    `;
+// Quote Modal
+function showQuoteModal(productName) {
+    const modal = document.getElementById('quote-modal');
+    const productInput = document.getElementById('quote-product');
     
-    document.head.insertAdjacentHTML('beforeend', modalStyles);
+    if (modal && productInput) {
+        productInput.value = productName;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
+
+// Set active navigation link based on current page
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav__link');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkHref = link.getAttribute('href');
+        
+        if ((currentPage === 'index.html' && linkHref === 'index.html') ||
+            (currentPage === 'about.html' && linkHref === 'about.html') ||
+            (currentPage === 'products.html' && linkHref === 'products.html') ||
+            (currentPage === 'contact.html' && linkHref === 'contact.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Page transition effect
+function animatePageTransition() {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.3s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+}
+
+// Initialize page transition when navigating
+window.addEventListener('beforeunload', () => {
+    document.body.style.opacity = '0';
+});
+
+// Initialize when page loads
+window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+});
