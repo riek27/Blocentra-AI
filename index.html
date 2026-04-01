@@ -2,183 +2,552 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kings Electronic Solutions - Your trusted partner for electronics and solar energy solutions in South Sudan.">
-    <title>Home - Kings Electronic Solutions</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Lone Star Roofing | Premier Roofing Company in Houston</title>
+    <meta name="description" content="Top-rated roofing company in Houston, TX. Licensed, insured, and ready to protect your home. Free estimates available.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0a0a0a',
+                            charcoal: '#1c1c1c',
+                            gold: '#c5a976',
+                            goldLight: '#dcc392',
+                            gray: '#f5f5f5'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .text-shadow-lg {
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.6) 40%, rgba(10,10,10,0.2) 100%);
+        }
+        @media (max-width: 1024px) {
+            .hero-overlay {
+                background: linear-gradient(to bottom, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.6) 60%, rgba(10,10,10,0.4) 100%);
+            }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            color: #c5a976;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Smooth reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5a976;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b0925a;
+        }
+
+        /* Offset for fixed header when anchoring */
+        html {
+            scroll-padding-top: 90px;
+        }
+
+        /* Mobile menu smooth transition */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        #mobile-menu.active {
+            max-height: 500px;
+            opacity: 1;
+            visibility: visible;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Typing cursor */
+        .typing-cursor {
+            border-right: 2px solid #c5a976;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
 </head>
-<body>
-    <!-- Header & Navigation -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="index.html" class="nav__logo">Kings Electronic Solutions</a>
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link active">Home</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="products.html" class="nav__link">Products & Services</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-                <div class="nav__close" id="nav-close">
-                    <i class="fas fa-times"></i>
+<body class="bg-brand-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-black/90 backdrop-blur-lg border-b border-white/10" id="header">
+        <div class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 text-2xl font-serif font-bold tracking-wide text-white">
+                <i class="fa-solid fa-house-chimney text-brand-gold"></i>
+                <span class="hidden sm:inline">LONE STAR ROOFING</span>
+                <span class="sm:hidden">LSR</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <div class="relative group">
+                    <a href="#home" class="text-white/80 hover:text-brand-gold transition font-medium">Home</a>
                 </div>
+                <div class="relative group">
+                    <a href="#about" class="text-white/80 hover:text-brand-gold transition font-medium">About</a>
+                </div>
+                <div class="relative group">
+                    <a href="#services" class="text-white/80 hover:text-brand-gold transition font-medium flex items-center gap-1">Services <i class="fa-solid fa-chevron-down text-xs"></i></a>
+                    <div class="absolute top-full left-0 mt-2 w-56 bg-brand-charcoal border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#services" class="block px-5 py-3 text-sm hover:bg-white/5 hover:text-brand-gold transition">Roof Installation</a>
+                        <a href="#services" class="block px-5 py-3 text-sm hover:bg-white/5 hover:text-brand-gold transition">Roof Repair</a>
+                        <a href="#services" class="block px-5 py-3 text-sm hover:bg-white/5 hover:text-brand-gold transition">Metal Roofing</a>
+                        <a href="#services" class="block px-5 py-3 text-sm hover:bg-white/5 hover:text-brand-gold transition">Commercial Roofing</a>
+                        <a href="#services" class="block px-5 py-3 text-sm hover:bg-white/5 hover:text-brand-gold transition">Waterproofing</a>
+                        <a href="#services" class="block px-5 py-3 text-sm hover:bg-white/5 hover:text-brand-gold transition">Gutter Services</a>
+                    </div>
+                </div>
+                <div><a href="#gallery" class="text-white/80 hover:text-brand-gold transition font-medium">Gallery</a></div>
+                <div><a href="#areas" class="text-white/80 hover:text-brand-gold transition font-medium">Service Areas</a></div>
+                <div><a href="#reviews" class="text-white/80 hover:text-brand-gold transition font-medium">Reviews</a></div>
+                <div><a href="#contact" class="text-white/80 hover:text-brand-gold transition font-medium">Contact</a></div>
+            </nav>
+            
+            <div class="hidden lg:block">
+                <a href="tel:+17135550199" class="flex items-center gap-2 bg-brand-gold/10 hover:bg-brand-gold/20 border border-brand-gold/40 text-white px-5 py-2 rounded-full transition font-medium">
+                    <i class="fa-solid fa-phone text-brand-gold"></i>
+                    <span>(713) 555-0199</span>
+                </a>
             </div>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="lg:hidden bg-brand-black/95 backdrop-blur-lg border-t border-white/10">
+            <div class="container mx-auto px-6 py-4 flex flex-col gap-5">
+                <a href="#home" class="text-white/80 hover:text-brand-gold transition py-2 text-lg font-medium">Home</a>
+                <a href="#about" class="text-white/80 hover:text-brand-gold transition py-2 text-lg font-medium">About</a>
+                <div class="flex flex-col gap-2 pl-3 border-l border-white/20">
+                    <a href="#services" class="text-white/80 hover:text-brand-gold transition text-base">Roof Installation</a>
+                    <a href="#services" class="text-white/80 hover:text-brand-gold transition text-base">Roof Repair</a>
+                    <a href="#services" class="text-white/80 hover:text-brand-gold transition text-base">Metal Roofing</a>
+                    <a href="#services" class="text-white/80 hover:text-brand-gold transition text-base">Commercial Roofing</a>
+                    <a href="#services" class="text-white/80 hover:text-brand-gold transition text-base">Gutter Services</a>
+                </div>
+                <a href="#gallery" class="text-white/80 hover:text-brand-gold transition py-2 text-lg font-medium">Gallery</a>
+                <a href="#areas" class="text-white/80 hover:text-brand-gold transition py-2 text-lg font-medium">Service Areas</a>
+                <a href="#reviews" class="text-white/80 hover:text-brand-gold transition py-2 text-lg font-medium">Reviews</a>
+                <a href="#contact" class="text-white/80 hover:text-brand-gold transition py-2 text-lg font-medium">Contact</a>
+                <a href="tel:+17135550199" class="flex items-center justify-center gap-2 bg-brand-gold/20 border border-brand-gold text-white py-3 rounded-full mt-2 font-semibold">
+                    <i class="fa-solid fa-phone text-brand-gold"></i> Call Now
+                </a>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="home section" id="home">
-            <div class="home__slider">
-                <div class="home__slide active">
-                    <img src="assets/asha.jpg" alt="Solar Panel Installation" class="home__img">
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Roofing Hero" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-white">
+                    <div class="inline-flex items-center gap-2 bg-brand-gold/20 backdrop-blur-sm border border-brand-gold/50 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+                        <i class="fa-solid fa-shield-halved text-brand-gold"></i>
+                        <span>#1 Rated Roofing Company in Houston</span>
+                    </div>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-5">
+                        Protect Your Home With Houston's Most Trusted Roofers
+                    </h1>
+                    <div class="flex items-center gap-2 text-brand-goldLight text-lg mb-6">
+                        <span id="typing-text" class="typing-cursor inline-block pr-2"></span>
+                    </div>
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="#contact" class="bg-brand-gold hover:bg-brand-goldLight text-brand-black font-semibold px-8 py-3 rounded-full transition flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> Get Free Estimate
+                        </a>
+                        <a href="tel:+17135550199" class="border border-white/40 hover:border-brand-gold text-white hover:text-brand-gold px-8 py-3 rounded-full transition flex items-center gap-2">
+                            <i class="fa-solid fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-6 text-sm text-white/80">
+                        <div><i class="fa-solid fa-circle-check text-brand-gold mr-2"></i> Licensed & Insured</div>
+                        <div><i class="fa-solid fa-star text-brand-gold mr-2"></i> 5-Star Rated</div>
+                        <div><i class="fa-solid fa-bolt text-brand-gold mr-2"></i> 24/7 Emergency</div>
+                    </div>
                 </div>
-                <div class="home__slide">
-                    <img src="assets/ashak.jpg" alt="Electronics Store" class="home__img">
-                </div>
-                <div class="home__slide">
-                    <img src="assets/ashakk.jpg" alt="Power Inverters" class="home__img">
-                </div>
-            </div>
-            <div class="home__overlay">
-                <div class="home__container container">
-                    <h1 class="home__title">Kings Electronic Solutions</h1>
-                    <p class="home__description">Home of Modern Electronic Appliances that Suit Modern Easy Life</p>
-                    <a href="products.html" class="button home__button">Explore Products</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Products -->
-        <section class="featured section">
-            <div class="featured__container container">
-                <h2 class="section__title">Featured Products</h2>
-                <div class="featured__grid">
-                    <div class="featured__card">
-                        <div class="featured__image">
-                            <img src="assets/ashh.jpg" alt="Solar Panels">
+                
+                <!-- Quote Form -->
+                <div class="bg-brand-black/60 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+                    <h3 class="font-serif text-2xl md:text-3xl text-white mb-2">Get Your Free Quote</h3>
+                    <p class="text-white/70 mb-6">Fill out the form and we'll respond within 24 hours</p>
+                    <form id="heroQuoteForm">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-white/80 text-sm mb-1">Full Name</label>
+                                <input type="text" placeholder="John Smith" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:border-brand-gold transition">
+                            </div>
+                            <div>
+                                <label class="block text-white/80 text-sm mb-1">Phone Number</label>
+                                <input type="tel" placeholder="(713) 555-0199" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:border-brand-gold transition">
+                            </div>
+                            <div>
+                                <label class="block text-white/80 text-sm mb-1">Service Needed</label>
+                                <select class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition">
+                                    <option value="" class="bg-brand-black">Select a service</option>
+                                    <option value="repair" class="bg-brand-black">Roof Repair</option>
+                                    <option value="installation" class="bg-brand-black">New Installation</option>
+                                    <option value="metal" class="bg-brand-black">Metal Roofing</option>
+                                    <option value="commercial" class="bg-brand-black">Commercial Roofing</option>
+                                    <option value="inspection" class="bg-brand-black">Free Inspection</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-white/80 text-sm mb-1">Message (Optional)</label>
+                                <textarea rows="2" placeholder="Tell us about your project..." class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:border-brand-gold transition"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-black font-bold py-3 rounded-xl transition">Request Free Estimate</button>
+                            <div class="flex items-center justify-center gap-2 text-white/50 text-sm mt-2">
+                                <i class="fa-solid fa-lock"></i>
+                                <span>Secure & Confidential</span>
+                            </div>
                         </div>
-                        <div class="featured__content">
-                            <h3 class="featured__name">Solar Panels</h3>
-                            <p class="featured__description">High-efficiency solar panels for sustainable energy solutions</p>
-                            <a href="products.html" class="button featured__button">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="featured__card">
-                        <div class="featured__image">
-                            <img src="assets/screen.png" alt="Power Inverters">
-                        </div>
-                        <div class="featured__content">
-                            <h3 class="featured__name">Power Inverters</h3>
-                            <p class="featured__description">Reliable power inverters for uninterrupted electricity supply</p>
-                            <a href="products.html" class="button featured__button">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="featured__card">
-                        <div class="featured__image">
-                            <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Audio Systems">
-                        </div>
-                        <div class="featured__content">
-                            <h3 class="featured__name">JBL Audio Systems</h3>
-                            <p class="featured__description">Premium quality audio systems for immersive sound experience</p>
-                            <a href="products.html" class="button featured__button">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Services -->
-        <section class="services-preview section">
-            <div class="services-preview__container container">
-                <h2 class="section__title">Our Services</h2>
-                <div class="services-preview__grid">
-                    <div class="service-preview__card">
-                        <i class="fas fa-tools service-preview__icon"></i>
-                        <h3 class="service-preview__name">Electronics Repair</h3>
-                        <p class="service-preview__description">Professional repair services for all your electronic devices</p>
-                    </div>
-                    <div class="service-preview__card">
-                        <i class="fas fa-solar-panel service-preview__icon"></i>
-                        <h3 class="service-preview__name">Solar Installation</h3>
-                        <p class="service-preview__description">Expert solar system design and installation services</p>
-                    </div>
-                    <div class="service-preview__card">
-                        <i class="fas fa-truck service-preview__icon"></i>
-                        <h3 class="service-preview__name">Delivery & Setup</h3>
-                        <p class="service-preview__description">Free delivery and professional installation services</p>
-                    </div>
-                    <div class="service-preview__card">
-                        <i class="fas fa-headset service-preview__icon"></i>
-                        <h3 class="service-preview__name">After-Sales Support</h3>
-                        <p class="service-preview__description">Comprehensive warranty and maintenance support</p>
-                    </div>
-                </div>
-                <div class="services-preview__action">
-                    <a href="products.html" class="button button--outline">View All Services</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer__container container">
-            <div class="footer__content">
-                <div class="footer__info">
-                    <h3 class="footer__logo">Kings Electronic Solutions</h3>
-                    <p class="footer__description">Your trusted partner for electronics and solar energy solutions in South Sudan.</p>
-                </div>
-                <div class="footer__links">
-                    <div class="footer__column">
-                        <h4 class="footer__title">Quick Links</h4>
-                        <ul class="footer__list">
-                            <li><a href="index.html" class="footer__link">Home</a></li>
-                            <li><a href="about.html" class="footer__link">About Us</a></li>
-                            <li><a href="products.html" class="footer__link">Products</a></li>
-                            <li><a href="contact.html" class="footer__link">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column">
-                        <h4 class="footer__title">Contact Info</h4>
-                        <ul class="footer__list">
-                            <li><i class="fas fa-phone footer__icon"></i> +211 921 565 576</li>
-                            <li><i class="fas fa-map-marker-alt footer__icon"></i> Gudelle II, Juba, South Sudan</li>
-                            <li><i class="fas fa-clock footer__icon"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <div class="footer__copyright">
-                    <p>&copy; 2025 Kings Electronic Solutions | All Rights Reserved</p>
-                </div>
-                <div class="footer__social">
-                    <a href="#" class="footer__social-link" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://wa.me/211921565576" class="footer__social-link" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
+                    </form>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="bg-brand-charcoal border-y border-white/10 py-12">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold text-xl"><i class="fa-solid fa-certificate"></i></div>
+                    <div><h4 class="text-white font-semibold">Fully Licensed</h4><p class="text-white/60 text-sm">Texas Licensed Contractor</p></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div><h4 class="text-white font-semibold">Fully Insured</h4><p class="text-white/60 text-sm">$2M Liability Coverage</p></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold text-xl"><i class="fa-solid fa-award"></i></div>
+                    <div><h4 class="text-white font-semibold">20+ Years</h4><p class="text-white/60 text-sm">Industry Experience</p></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold text-xl"><i class="fa-solid fa-star"></i></div>
+                    <div><h4 class="text-white font-semibold">5-Star Rated</h4><p class="text-white/60 text-sm">500+ Happy Customers</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-brand-black">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Roofing team" class="rounded-2xl shadow-2xl w-full">
+                    <div class="absolute -bottom-6 -right-6 bg-brand-gold text-brand-black rounded-2xl p-5 shadow-xl">
+                        <h3 class="font-serif text-4xl font-bold">20+</h3>
+                        <p class="text-sm font-medium">Years of<br>Excellence</p>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-5">Houston's Most Trusted Roofing Experts</h2>
+                    <p class="text-white/70 text-lg mb-6">At Lone Star Roofing, we build lasting relationships with our community. Our certified professionals bring decades of experience, ensuring your home is protected against Texas's harsh weather.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+                        <div class="flex gap-3"><i class="fa-solid fa-check-circle text-brand-gold text-xl mt-1"></i><div><h4 class="text-white font-semibold">Expert Craftsmanship</h4><p class="text-white/60 text-sm">Certified installers</p></div></div>
+                        <div class="flex gap-3"><i class="fa-solid fa-check-circle text-brand-gold text-xl mt-1"></i><div><h4 class="text-white font-semibold">Premium Materials</h4><p class="text-white/60 text-sm">Top-tier manufacturers</p></div></div>
+                        <div class="flex gap-3"><i class="fa-solid fa-check-circle text-brand-gold text-xl mt-1"></i><div><h4 class="text-white font-semibold">Storm Specialists</h4><p class="text-white/60 text-sm">Insurance experts</p></div></div>
+                        <div class="flex gap-3"><i class="fa-solid fa-check-circle text-brand-gold text-xl mt-1"></i><div><h4 class="text-white font-semibold">Clean & Safe</h4><p class="text-white/60 text-sm">Magnetic cleanup</p></div></div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4 border border-white/10">
+                        <i class="fa-solid fa-badge-check text-brand-gold text-3xl"></i>
+                        <div><h4 class="text-white font-semibold">Fully Licensed & Insured</h4><p class="text-white/60 text-sm">License #TX-12345678 | Workers' Comp & Liability</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-charcoal">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">Our Premium Roofing Services</h2>
+                <p class="text-white/70 text-lg">From minor repairs to complete installations, tailored solutions for Houston's climate.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Repeat service cards (6) -->
+                <div class="service-card bg-brand-black/50 border border-white/10 rounded-2xl p-6 hover:border-brand-gold/50 transition group">
+                    <div class="service-icon w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-2xl text-brand-gold mb-5 transition"> <i class="fa-solid fa-house-chimney"></i> </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Roof Installation</h3>
+                    <p class="text-white/70 mb-4">Complete roof replacement using premium materials designed for extreme weather.</p>
+                    <ul class="space-y-2 text-sm text-white/60 mb-5">
+                        <li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Architectural shingles</li>
+                        <li><i class="fa-solid fa-star text-brand-gold mr-2"></i> 50-year warranties</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-brand-gold hover:gap-2 transition">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card bg-brand-black/50 border border-white/10 rounded-2xl p-6 hover:border-brand-gold/50 transition">
+                    <div class="service-icon w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-2xl text-brand-gold mb-5"><i class="fa-solid fa-hammer"></i></div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Roof Repair</h3>
+                    <p class="text-white/70 mb-4">Fast, reliable repairs for storm damage, leaks, missing shingles.</p>
+                    <ul class="space-y-2 text-sm text-white/60 mb-5"><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> 24/7 emergency service</li><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Insurance claims</li></ul>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-brand-gold hover:gap-2 transition">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card bg-brand-black/50 border border-white/10 rounded-2xl p-6 hover:border-brand-gold/50 transition">
+                    <div class="service-icon w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-2xl text-brand-gold mb-5"><i class="fa-solid fa-industry"></i></div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Metal Roofing</h3>
+                    <p class="text-white/70 mb-4">Durable, energy-efficient metal systems that last 50+ years.</p>
+                    <ul class="space-y-2 text-sm text-white/60 mb-5"><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Standing seam</li><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Reduce energy cost</li></ul>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-brand-gold hover:gap-2 transition">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card bg-brand-black/50 border border-white/10 rounded-2xl p-6 hover:border-brand-gold/50 transition">
+                    <div class="service-icon w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-2xl text-brand-gold mb-5"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Commercial Roofing</h3>
+                    <p class="text-white/70 mb-4">TPO, EPDM & PVC systems for businesses and industrial facilities.</p>
+                    <ul class="space-y-2 text-sm text-white/60 mb-5"><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Minimal disruption</li><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Maintenance plans</li></ul>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-brand-gold hover:gap-2 transition">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card bg-brand-black/50 border border-white/10 rounded-2xl p-6 hover:border-brand-gold/50 transition">
+                    <div class="service-icon w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-2xl text-brand-gold mb-5"><i class="fa-solid fa-droplet"></i></div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Waterproofing</h3>
+                    <p class="text-white/70 mb-4">Advanced waterproofing for foundations, decks and humidity protection.</p>
+                    <ul class="space-y-2 text-sm text-white/60 mb-5"><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Foundation sealing</li><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Mold prevention</li></ul>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-brand-gold hover:gap-2 transition">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card bg-brand-black/50 border border-white/10 rounded-2xl p-6 hover:border-brand-gold/50 transition">
+                    <div class="service-icon w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-2xl text-brand-gold mb-5"><i class="fa-solid fa-water"></i></div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Gutter Services</h3>
+                    <p class="text-white/70 mb-4">Seamless aluminum gutters and gutter guards to protect your foundation.</p>
+                    <ul class="space-y-2 text-sm text-white/60 mb-5"><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Seamless gutters</li><li><i class="fa-solid fa-star text-brand-gold mr-2"></i> Gutter guards</li></ul>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-brand-gold hover:gap-2 transition">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-brand-black">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">What Our Customers Say</h2>
+                <p class="text-white/70">Houston homeowners trust Lone Star Roofing for excellence.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-brand-charcoal border border-white/10 rounded-2xl p-6">
+                    <div class="flex justify-between items-start mb-4"><div class="flex gap-3"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-brand-gold"><div><h4 class="text-white font-semibold">Sarah Mitchell</h4><div class="text-sm text-white/50"><i class="fa-brands fa-google text-brand-gold"></i> Google Review</div></div></div><div class="text-brand-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div>
+                    <p class="text-white/80 italic">"After the hailstorm, they tarped our roof same day and handled insurance. New roof in 3 days. Professional, clean, highly recommend!"</p>
+                    <div class="mt-4 text-white/40 text-sm">2 weeks ago</div>
+                </div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-2xl p-6">
+                    <div class="flex justify-between items-start mb-4"><div class="flex gap-3"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-brand-gold"><div><h4 class="text-white font-semibold">Michael Rodriguez</h4><div class="text-sm text-white/50"><i class="fa-brands fa-google text-brand-gold"></i> Google Review</div></div></div><div class="text-brand-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div>
+                    <p class="text-white/80 italic">"Metal roof installation in The Heights was flawless. Energy bills dropped and the crew was amazing. Highly skilled."</p>
+                    <div class="mt-4 text-white/40 text-sm">1 month ago</div>
+                </div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-2xl p-6">
+                    <div class="flex justify-between items-start mb-4"><div class="flex gap-3"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-brand-gold"><div><h4 class="text-white font-semibold">Jennifer Lee</h4><div class="text-sm text-white/50"><i class="fa-brands fa-google text-brand-gold"></i> Google Review</div></div></div><div class="text-brand-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div>
+                    <p class="text-white/80 italic">"Best roofing company in Houston! Fixed a leak two others couldn't. Honest, fair pricing. Already recommended to neighbors."</p>
+                    <div class="mt-4 text-white/40 text-sm">3 weeks ago</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-brand-charcoal">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">Our Recent Projects</h2>
+                <p class="text-white/70">Portfolio of completed roofing projects across Houston.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="gallery-item relative overflow-hidden rounded-xl h-64"><img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"><div class="gallery-content absolute bottom-0 left-0 p-4"><h4 class="text-white font-bold text-lg">Modern Installation</h4><p class="text-white/80 text-sm">The Heights</p></div></div>
+                <div class="gallery-item relative overflow-hidden rounded-xl h-64"><img src="https://images.unsplash.com/photo-1596253434682-7814c8318629?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"><div class="gallery-content absolute bottom-0 left-0 p-4"><h4 class="text-white font-bold text-lg">Metal Roofing</h4><p class="text-white/80 text-sm">Memorial</p></div></div>
+                <div class="gallery-item relative overflow-hidden rounded-xl h-64"><img src="https://images.unsplash.com/photo-1627503999241-7118f898954e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"><div class="gallery-content absolute bottom-0 left-0 p-4"><h4 class="text-white font-bold text-lg">Commercial Project</h4><p class="text-white/80 text-sm">Energy Corridor</p></div></div>
+                <div class="gallery-item relative overflow-hidden rounded-xl h-64"><img src="https://images.unsplash.com/photo-1593423808866-9802033f4c1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"><div class="gallery-content absolute bottom-0 left-0 p-4"><h4 class="text-white font-bold text-lg">Storm Repair</h4><p class="text-white/80 text-sm">Katy, TX</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section id="areas" class="py-20 bg-brand-black border-y border-white/10">
+        <div class="container mx-auto px-6 lg:px-8 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">Service Areas</h2>
+            <p class="text-white/70 mb-12">Proudly serving Houston and surrounding communities</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Houston Inner Loop</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> The Heights</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Meyerland</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> West University</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Katy</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Sugar Land</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Pearland</div>
+                <div class="bg-brand-charcoal border border-white/10 rounded-xl p-4 text-white/80 hover:border-brand-gold transition"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> The Woodlands</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-brand-charcoal pt-16 pb-8 border-t border-white/10">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div><a href="#" class="flex items-center gap-2 text-2xl font-serif font-bold text-white mb-4"><i class="fa-solid fa-house-chimney text-brand-gold"></i> LONE STAR ROOFING</a><p class="text-white/60 text-sm">Houston's premier roofing contractor providing exceptional service and lasting protection.</p><div class="flex gap-3 mt-5"><a href="#" class="text-white/50 hover:text-brand-gold transition"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="text-white/50 hover:text-brand-gold transition"><i class="fa-brands fa-instagram"></i></a><a href="#" class="text-white/50 hover:text-brand-gold transition"><i class="fa-brands fa-twitter"></i></a></div></div>
+                <div><h4 class="text-white font-semibold mb-4">Quick Links</h4><ul class="space-y-2 text-white/60"><li><a href="#home" class="hover:text-brand-gold transition">Home</a></li><li><a href="#about" class="hover:text-brand-gold transition">About</a></li><li><a href="#services" class="hover:text-brand-gold transition">Services</a></li><li><a href="#gallery" class="hover:text-brand-gold transition">Gallery</a></li></ul></div>
+                <div><h4 class="text-white font-semibold mb-4">Services</h4><ul class="space-y-2 text-white/60"><li><a href="#services" class="hover:text-brand-gold transition">Roof Installation</a></li><li><a href="#services" class="hover:text-brand-gold transition">Roof Repair</a></li><li><a href="#services" class="hover:text-brand-gold transition">Metal Roofing</a></li><li><a href="#services" class="hover:text-brand-gold transition">Gutter Services</a></li></ul></div>
+                <div><h4 class="text-white font-semibold mb-4">Contact Us</h4><div class="space-y-3 text-white/60"><div class="flex gap-3"><i class="fa-solid fa-phone text-brand-gold mt-1"></i><span>(713) 555-0199</span></div><div class="flex gap-3"><i class="fa-solid fa-envelope text-brand-gold mt-1"></i><span>info@lonestarroofing.com</span></div><div class="flex gap-3"><i class="fa-solid fa-location-dot text-brand-gold mt-1"></i><span>1234 Main Street, Houston, TX 77002</span></div></div></div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between text-white/40 text-sm"><p>© 2026 Lone Star Roofing. All rights reserved.</p><p>License #TX-12345678 | Fully Insured</p></div>
+        </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/211921565576" class="whatsapp__float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Chatbot Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div id="chatbotWindow" class="absolute bottom-20 right-0 w-80 bg-brand-black border border-white/20 rounded-2xl shadow-2xl overflow-hidden opacity-0 invisible transition-all duration-300">
+            <div class="bg-brand-gold/20 p-4 flex justify-between items-center border-b border-white/10"><h4 class="text-white font-semibold"><i class="fa-solid fa-comments mr-2"></i>Chat with Us</h4><button onclick="toggleChatbot()" class="text-white/70 hover:text-white"><i class="fa-solid fa-xmark"></i></button></div>
+            <div class="p-4"><div class="bg-white/5 rounded-xl p-3 text-white/80 text-sm mb-4">Hi! 👋 Send us your phone number and we'll reply within 15 minutes.</div><form id="chatbotForm"><input type="text" placeholder="Your Name" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white text-sm mb-3 focus:outline-none focus:border-brand-gold"><input type="tel" placeholder="Phone Number" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white text-sm mb-3 focus:outline-none focus:border-brand-gold"><input type="text" placeholder="Message" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white text-sm mb-3 focus:outline-none focus:border-brand-gold"><button type="submit" class="w-full bg-brand-gold text-brand-black font-semibold py-3 rounded-xl hover:bg-brand-goldLight transition">Send Message</button></form></div>
+        </div>
+        <button onclick="toggleChatbot()" class="w-14 h-14 bg-brand-gold rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition"><i class="fa-solid fa-comment-dots"></i></button>
+    </div>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <script>
+        // Typing Animation
+        const phrases = ["Roof Installation Experts","Storm Damage Specialists","Metal Roofing Professionals","24/7 Emergency Repairs","Free Inspections Available"];
+        let idx = 0, charIdx = 0, deleting = false;
+        const typingSpan = document.getElementById('typing-text');
+        function typeEffect() {
+            const current = phrases[idx];
+            if (!deleting && charIdx <= current.length) typingSpan.textContent = current.slice(0, charIdx++);
+            else if (deleting && charIdx >= 0) typingSpan.textContent = current.slice(0, charIdx--);
+            if (!deleting && charIdx === current.length+1) { deleting = true; setTimeout(typeEffect, 2000); return; }
+            if (deleting && charIdx === 0) { deleting = false; idx = (idx+1)%phrases.length; setTimeout(typeEffect, 400); return; }
+            setTimeout(typeEffect, deleting ? 50 : 100);
+        }
+        typeEffect();
 
-    <script src="script.js"></script>
+        // Header scroll & mobile menu
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('bg-brand-black/80', window.scrollY > 50);
+        });
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => { mobileMenu.classList.toggle('active'); });
+        document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.remove('active')); });
+
+        // Forms
+        document.getElementById('heroQuoteForm').addEventListener('submit', e => { e.preventDefault(); alert('Thank you! We will contact you within 24h.'); e.target.reset(); });
+        document.getElementById('chatbotForm').addEventListener('submit', e => { e.preventDefault(); alert('Thank you! We will text you shortly.'); toggleChatbot(); e.target.reset(); });
+        function toggleChatbot() { document.getElementById('chatbotWindow').classList.toggle('opacity-0'); document.getElementById('chatbotWindow').classList.toggle('invisible'); }
+
+        // Smooth scroll & reveal on scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
